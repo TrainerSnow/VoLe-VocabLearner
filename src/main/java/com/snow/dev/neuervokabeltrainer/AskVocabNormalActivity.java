@@ -81,7 +81,6 @@ public class AskVocabNormalActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 vocabsArray.remove(currentRandom);
-                Log.d("VocabsArray Removed Item", vocabsArray.toString());
                 updateVocJSONFile(vocabsObject);
                 showNewVocab();
             }

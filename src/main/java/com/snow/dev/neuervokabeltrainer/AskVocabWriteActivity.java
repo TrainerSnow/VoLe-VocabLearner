@@ -101,8 +101,6 @@ public class AskVocabWriteActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Log.d("JSONObject Vocabs", vocabsObject.toString());
-                Log.d("JSONARRAY Vocabs", vocabsJSONArray.toString());
                 updateVocJSONFile(vocabsObject);
                 startActivity(new Intent(getBaseContext(), HomeActivity.class));
             }
@@ -131,8 +129,6 @@ public class AskVocabWriteActivity extends AppCompatActivity {
                 }
                 vocabInputEditText.setText("");
                 cheatButtonWasPushed = false;
-
-                Log.d("JSONARRAY Vocabs", vocabsJSONArray.toString());
             }
         });
 
@@ -294,7 +290,6 @@ public class AskVocabWriteActivity extends AppCompatActivity {
 
     private VocabPair[] JSONArrayToVocabPairs(JSONArray arr){
         VocabPair[] resultArray = new VocabPair[arr.length()];
-        Log.d("JSONARRAY Vocabs", arr.toString());
         try{
             for (int i = 0; i < arr.length(); i++) {
                     resultArray[i] = new VocabPair(arr.getJSONArray(i).getString(0), arr.getJSONArray(i).getString(1), arr.getJSONArray(i).getInt(2), arr.getJSONArray(i).getInt(3));

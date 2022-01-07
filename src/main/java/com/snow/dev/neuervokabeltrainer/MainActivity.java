@@ -24,9 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "Hello");
         setContentView(R.layout.loading_screen);
-        Log.d(TAG, "Bye");
         super.onCreate(savedInstanceState);
         getSupportActionBar().setTitle("");
         getSupportActionBar().hide();
