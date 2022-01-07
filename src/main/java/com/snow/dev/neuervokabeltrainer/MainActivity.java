@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             public void run(){
                 startActivity(new Intent(getBaseContext(), HomeActivity.class));
             }
-        }, 300);
+        }, 3000);
     }
 
 
