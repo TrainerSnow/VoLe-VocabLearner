@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,6 +22,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
 
@@ -32,11 +32,11 @@ public class AskVocabWriteActivity extends AppCompatActivity {
     private int currentRandom = 0;
     private String currentSolution;
     private String currentQuestion;
-    private JSONArray vocabsJSONArray;
+    private JSONArray originalVocabsJSONArray;
     private JSONObject vocabsObject;
     private EditText vocabInputEditText;
     private TextView vocabShowTextView;
-    private VocabPair[] vocabsArray;
+    private ArrayList<VocabPair> vocabsArray = new ArrayList<>();
 
 
     @Override
@@ -53,11 +53,11 @@ public class AskVocabWriteActivity extends AppCompatActivity {
         File vocabsFile = setUpFile(Variables.currentVocabulary);
         vocabsObject = loadJSONFile(vocabsFile);
         try {
-            vocabsJSONArray = vocabsObject.getJSONArray("vocabs");
+            originalVocabsJSONArray = vocabsObject.getJSONArray("vocabs");
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        vocabsArray = JSONArrayToVocabPairs(vocabsJSONArray);
+        vocabsArray = JSONArrayToArrayList(originalVocabsJSONArray);
 
         assignVocab();
         showVocab();
@@ -84,8 +84,8 @@ public class AskVocabWriteActivity extends AppCompatActivity {
         deleteVocabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vocabsJSONArray.remove(currentRandom);
-                vocabsArray = JSONArrayToVocabPairs(vocabsJSONArray);
+                originalVocabsJSONArray.remove(currentRandom);
+                vocabsArray = JSONArrayToArrayList(originalVocabsJSONArray);
                 Toast.makeText(getBaseContext(), "Deleted " + currentQuestion + " - " + currentSolution, Toast.LENGTH_LONG).show();
                 updateVocJSONFile(vocabsObject);
                 assignVocab();
@@ -97,7 +97,7 @@ public class AskVocabWriteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    vocabsObject.put("vocabs", vocabsJSONArray);
+                    vocabsObject.put("vocabs", originalVocabsJSONArray);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -151,8 +151,8 @@ public class AskVocabWriteActivity extends AppCompatActivity {
         }catch(JSONException e){
             e.printStackTrace();
         }
-        vocabsArray[currentRandom].setNumGuessedRight(vocabsArray[currentRandom].getNumGuessedRight() + 1);
-        vocabsJSONArray = VocabPairArrayToJSONArray(vocabsArray);
+        vocabsArray.get(currentRandom).setNumGuessedRight(vocabsArray.get(currentRandom).getNumGuessedRight() + 1);
+        originalVocabsJSONArray = ArrayListToJSONArray(vocabsArray);
         updateVocJSONFile(vocabsObject);
         assignVocab();
         showVocab();
@@ -177,8 +177,8 @@ public class AskVocabWriteActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        vocabsArray[currentRandom].setNumGuessedWrong(vocabsArray[currentRandom].getNumGuessedWrong() + 1);
-        vocabsJSONArray = VocabPairArrayToJSONArray(vocabsArray);
+        vocabsArray.get(currentRandom).setNumGuessedWrong(vocabsArray.get(currentRandom).getNumGuessedWrong() + 1);
+        originalVocabsJSONArray = ArrayListToJSONArray(vocabsArray);
         updateVocJSONFile(vocabsObject);
 
         showVocab();
@@ -191,12 +191,23 @@ public class AskVocabWriteActivity extends AppCompatActivity {
         Random rand = new Random();
         int recentRandom = currentRandom;
         while (recentRandom == currentRandom) {
-            currentRandom = rand.nextInt(vocabsArray.length);
-            if (vocabsArray.length == 1)
+            currentRandom = rand.nextInt(vocabsArray.size());
+            if (vocabsArray.size() == 1)
                 break;
         }
-        currentQuestion = vocabsArray[currentRandom].getName();
-        currentSolution = vocabsArray[currentRandom].getValue();
+        if(allVocabsHaveBeenAsked()){
+            setBackAskedFlag();
+        }else{
+            while(vocabsArray.get(currentRandom).hasBeenAsked){
+                if(currentRandom + 1 < vocabsArray.size()){
+                    currentRandom++;
+                }else{
+                    currentRandom = 0;
+                }
+            }
+        }
+        currentQuestion = vocabsArray.get(currentRandom).getName();
+        currentSolution = vocabsArray.get(currentRandom).getValue();
     }
 
     private void updateVocJSONFile(JSONObject j){
@@ -243,6 +254,7 @@ public class AskVocabWriteActivity extends AppCompatActivity {
 
     private void showVocab(){
         vocabShowTextView.setText(currentQuestion);
+        vocabsArray.get(currentRandom).hasBeenAsked = true;
     }
 
     protected static JSONObject loadJSONFile(File file) {
@@ -288,11 +300,11 @@ public class AskVocabWriteActivity extends AppCompatActivity {
         return f;
     }
 
-    private VocabPair[] JSONArrayToVocabPairs(JSONArray arr){
-        VocabPair[] resultArray = new VocabPair[arr.length()];
+    private ArrayList<VocabPair> JSONArrayToArrayList(JSONArray arr){
+        ArrayList<VocabPair> resultArray = new ArrayList<>();
         try{
             for (int i = 0; i < arr.length(); i++) {
-                    resultArray[i] = new VocabPair(arr.getJSONArray(i).getString(0), arr.getJSONArray(i).getString(1), arr.getJSONArray(i).getInt(2), arr.getJSONArray(i).getInt(3));
+                    resultArray.add( new VocabPair(arr.getJSONArray(i).getString(0), arr.getJSONArray(i).getString(1), arr.getJSONArray(i).getInt(2), arr.getJSONArray(i).getInt(3)));
             }
         }catch(JSONException e){
             e.printStackTrace();
@@ -300,16 +312,30 @@ public class AskVocabWriteActivity extends AppCompatActivity {
         return resultArray;
     }
 
-    private JSONArray VocabPairArrayToJSONArray(VocabPair[] arr){
+    private JSONArray ArrayListToJSONArray(ArrayList<VocabPair> arr){
         JSONArray resultArray = new JSONArray();
-        for(int i = 0; i < arr.length; i++){
+        for(int i = 0; i < arr.size(); i++){
             JSONArray tempArray = new JSONArray();
-            tempArray.put(arr[i].getName());
-            tempArray.put(arr[i].getValue());
-            tempArray.put(arr[i].getNumGuessedRight());
-            tempArray.put(arr[i].getNumGuessedWrong());
+            tempArray.put(arr.get(i).getName());
+            tempArray.put(arr.get(i).getValue());
+            tempArray.put(arr.get(i).getNumGuessedRight());
+            tempArray.put(arr.get(i).getNumGuessedWrong());
             resultArray.put(tempArray);
         }
         return resultArray;
+    }
+
+    private boolean allVocabsHaveBeenAsked(){
+        for(VocabPair pair : vocabsArray){
+            if(!pair.hasBeenAsked)
+                return false;
+        }
+        return true;
+    }
+
+    private void setBackAskedFlag(){
+        for(VocabPair pair : vocabsArray){
+            pair.hasBeenAsked = false;
+        }
     }
 }

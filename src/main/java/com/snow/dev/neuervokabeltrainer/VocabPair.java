@@ -6,6 +6,7 @@ public class VocabPair {
     private String value;
     private int numGuessedRight;
     private int numGuessedWrong;
+    public boolean hasBeenAsked = false;
 
 
     public VocabPair(String name, String value) {
