@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">VoLe - Vocab Learner</string>
+    <string name="title_activity_ask_vocab_write">AskVocabWriteActivity</string>
+    <!-- Strings used for fragments for navigation -->
+</resources>

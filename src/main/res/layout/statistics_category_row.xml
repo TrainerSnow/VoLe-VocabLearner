@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/statisticsCategoryHeader"
+        android:text="Default Category Header"
+        android:textAlignment="center"
+        android:textColor="@color/dark_blue"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/statisticsInCategoryListView"
+        android:divider="@null"
+        android:dividerHeight="0dp"/>
+
+</LinearLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:orientation="horizontal"
+    android:layout_marginBottom="8dp"
+    android:padding="5dp"
+    >
+
+    <TextView
+        android:id="@+id/statisticsName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Default StatisticName"
+        android:layout_weight="1"
+        android:textAlignment="textStart"
+        android:textColor="@color/light_blue"/>
+
+    <TextView
+        android:id="@+id/statisticsValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Default Statistics Value"
+        android:layout_weight="1"
+        android:textAlignment="textEnd"
+        android:textColor="@color/light_blue"/>
+
+</LinearLayout>
