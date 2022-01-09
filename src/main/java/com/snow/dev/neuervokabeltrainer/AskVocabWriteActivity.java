@@ -72,7 +72,7 @@ public class AskVocabWriteActivity extends AppCompatActivity {
                     if(Variables.settingsJSONObject.getBoolean("cheatMode"))
                         vocabInputEditText.setText(currentSolution);
                     else
-                        Toast.makeText(getBaseContext(), "Cheatmodus ist aus!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getBaseContext(), R.string.cheatmode_is_off, Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -84,7 +84,7 @@ public class AskVocabWriteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 originalVocabsJSONArray.remove(currentRandom);
                 vocabsArray = JSONArrayToArrayList(originalVocabsJSONArray);
-                Toast.makeText(getBaseContext(), "Deleted " + currentQuestion + " - " + currentSolution, Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), currentQuestion + " - " + currentSolution, Toast.LENGTH_LONG).show();
                 updateVocJSONFile(vocabsObject);
                 assignVocab();
                 showVocab();
@@ -144,7 +144,7 @@ public class AskVocabWriteActivity extends AppCompatActivity {
                 Variables.statisticsJSONObject.getJSONObject("writemode").put("numTotal", currentNumTotal + 1);
                 updateStatJSONFile(Variables.statisticsJSONObject);
             }else{
-                Toast.makeText(getBaseContext(), "Vokabeln die mit Cheatmodus eingegeben wurden zählen nicht zu den Statistiken", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), R.string.vocab_cheatmode_not_count_stats, Toast.LENGTH_SHORT).show();
             }
         }catch(JSONException e){
             e.printStackTrace();
@@ -169,7 +169,7 @@ public class AskVocabWriteActivity extends AppCompatActivity {
                 Variables.statisticsJSONObject.getJSONObject("writemode").put("numTotal", currentNumTotal + 1);
                 updateStatJSONFile(Variables.statisticsJSONObject);
             }else{
-                Toast.makeText(getBaseContext(), "Vokabeln die mit Cheatmodus eingegeben wurden zählen nicht zu den Statistiken", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), R.string.vocab_cheatmode_not_count_stats, Toast.LENGTH_SHORT).show();
             }
         }catch(JSONException e){
             e.printStackTrace();

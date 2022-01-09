@@ -76,7 +76,7 @@ public class AskVocabNormalActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try{
-                    Toast.makeText(getBaseContext(), "Deleted " + currentJSONArray.get(0) + " - " + currentJSONArray.get(1), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), currentJSONArray.get(0) + " - " + currentJSONArray.get(1), Toast.LENGTH_SHORT).show();
                 }catch(JSONException e){
                     e.printStackTrace();
                 }

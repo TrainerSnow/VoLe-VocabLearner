@@ -12,4 +12,8 @@
     <string name="save">Speichern</string>
     <string name="vocabname">Deutsche Vokabel</string>
     <string name="vocabvalue">Übersetzte Vokabel</string>
+    <string name="no_vocabs_in_set">Dieses Set hat keine Vokabeln. Bitte füge erst welche Hinzu</string>
+    <string name="cheatmode_is_off">Cheatmodus ist aus!</string>
+    <string name="deleted">Gelöscht: %s - %s</string>
+    <string name="vocab_cheatmode_not_count_stats">Vokabeln die mit Cheatmodus eingegeben wurden zählen nicht zu den Statistiken</string>
 </resources>

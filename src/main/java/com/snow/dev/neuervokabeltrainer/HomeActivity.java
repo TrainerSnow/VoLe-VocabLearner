@@ -90,7 +90,7 @@ public class HomeActivity extends AppCompatActivity {
                     vocabArray = vocabObject.getJSONArray("vocabs");
 
                     if(vocabArray.length() == 0){
-                        Toast.makeText(getBaseContext(), "Dieses Set hat keine Vokabeln. Bitte füge erst welche Hinzu", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getBaseContext(), R.string.no_vocabs_in_set, Toast.LENGTH_SHORT).show();
                         return;
                     }
                     if (Variables.settingsJSONObject.getBoolean("writeMode"))
