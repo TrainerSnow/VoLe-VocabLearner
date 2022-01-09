@@ -192,7 +192,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
     private File setUpFile(String fileName) {
-        File f = new File(this.getBaseContext().getFilesDir(), fileName);
+        File f = new File(this.getBaseContext().getFilesDir(), fileName + ".json");
         if(f.exists()) {
             return f;
         }

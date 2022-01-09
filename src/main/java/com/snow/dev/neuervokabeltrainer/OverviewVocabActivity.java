@@ -28,6 +28,7 @@ public class OverviewVocabActivity extends AppCompatActivity {
     static ArrayList<VocabPair> vocabArray;
     static JSONArray vocabArrayJSON;
     static JSONObject vocabsJSONObject;
+    private static final String TAG = "OverviewVocabActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class OverviewVocabActivity extends AppCompatActivity {
         View vocabSetStatsButton = findViewById(R.id.vocabSetStatsButton);
 
         vocabsJSONObject = loadJSONFile(new File(getBaseContext().getFilesDir() + "/" + Variables.currentVocabulary + ".json"));
+        Log.d(TAG, vocabsJSONObject.toString());
         try {
             vocabArrayJSON = vocabsJSONObject.getJSONArray("vocabs");
         } catch (JSONException e) {
