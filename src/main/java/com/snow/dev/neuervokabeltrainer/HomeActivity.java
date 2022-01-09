@@ -82,9 +82,7 @@ public class HomeActivity extends AppCompatActivity {
                 try{
 
                     Variables.currentVocabulary = vocabSetsArray.get(position).getVocabFileName();
-                    Log.d(TAG, Variables.currentVocabulary);
                     Variables.currentVocabSetName = vocabSetsArray.get(position).getTitle();
-                    Log.d(TAG, Variables.currentVocabSetName);
                     vocabFile = setUpFile(Variables.currentVocabulary);
                     vocabObject = loadJSONFile(vocabFile, Variables.VOCAB_FILE_PRESET);
                     vocabArray = vocabObject.getJSONArray("vocabs");

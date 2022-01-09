@@ -70,6 +70,6 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/vocabListView" />
+        android:id="@+id/vocabListView"/>
 
 </LinearLayout>

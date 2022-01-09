@@ -2,6 +2,7 @@ package com.snow.dev.neuervokabeltrainer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -36,11 +37,11 @@ public class OverviewVocabActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("");
         getSupportActionBar().hide();
 
-        vocabView  = (ListView) findViewById(R.id.vocabListView);
+        vocabView  = findViewById(R.id.vocabListView);
         vocabArray = new ArrayList<>();
         vocabAdapter = new ListViewAdapterVocabPair(getBaseContext(), vocabArray, R.layout.vocab_row);
-        EditText vocabNameInput = (EditText) findViewById(R.id.newVocabInputName);
-        EditText vocabValueInput = (EditText) findViewById(R.id.newVocabInputValue);
+        EditText vocabNameInput = findViewById(R.id.newVocabInputName);
+        EditText vocabValueInput = findViewById(R.id.newVocabInputValue);
         View setNewVocabButton = findViewById(R.id.setNewVocabButton);
         View saveAndReturn = findViewById(R.id.saveAndReturn);
         View vocabSetStatsButton = findViewById(R.id.vocabSetStatsButton);
@@ -72,7 +73,9 @@ public class OverviewVocabActivity extends AppCompatActivity {
                 JSONArray newVocabJSONArray = new JSONArray();
                 newVocabJSONArray.put(newName);
                 newVocabJSONArray.put(newValue);
-                //amountRight & Wrong
+                /*
+                amountRight & Wrong
+                 */
                 newVocabJSONArray.put(0);
                 newVocabJSONArray.put(0);
                 vocabArrayJSON.put(newVocabJSONArray);
@@ -88,8 +91,6 @@ public class OverviewVocabActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 updateJSONFile(vocabsJSONObject, Variables.currentVocabulary);
-                vocabNameInput.setText("");
-                vocabValueInput.setText("");
                 startActivity(new Intent(getBaseContext(), HomeActivity.class));
             }
         });
