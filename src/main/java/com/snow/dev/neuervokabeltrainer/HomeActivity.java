@@ -2,17 +2,24 @@ package com.snow.dev.neuervokabeltrainer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
@@ -20,6 +27,10 @@ public class HomeActivity extends AppCompatActivity {
     static ListView vocabSetsView;
     public static ArrayList<VocabSet> vocabSetsArray;
     static ListViewAdapterVocabSet vocabSetsAdapter;
+    private JSONObject vocabObject;
+    private JSONArray vocabArray;
+    private File vocabFile;
+    private static final String TAG = "HomeActivity";
 
 
     @Override
@@ -65,12 +76,23 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        vocabSetsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        vocabSetsView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Variables.currentVocabulary = vocabSetsArray.get(position).getVocabFileName();
-                Variables.currentVocabSetName = vocabSetsArray.get(position).getTitle();
                 try{
+
+                    Variables.currentVocabulary = vocabSetsArray.get(position).getVocabFileName();
+                    Log.d(TAG, Variables.currentVocabulary);
+                    Variables.currentVocabSetName = vocabSetsArray.get(position).getTitle();
+                    Log.d(TAG, Variables.currentVocabSetName);
+                    vocabFile = setUpFile(Variables.currentVocabulary);
+                    vocabObject = loadJSONFile(vocabFile, Variables.VOCAB_FILE_PRESET);
+                    vocabArray = vocabObject.getJSONArray("vocabs");
+
+                    if(vocabArray.length() == 0){
+                        Toast.makeText(getBaseContext(), "Dieses Set hat keine Vokabeln. Bitte füge erst welche Hinzu", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     if (Variables.settingsJSONObject.getBoolean("writeMode"))
                         startActivity(new Intent(getBaseContext(), AskVocabWriteActivity.class));
                     else
@@ -135,5 +157,54 @@ public class HomeActivity extends AppCompatActivity {
     private void onSettingsButton(int position){
         Variables.currentVocabulary = vocabSetsArray.get(position).getVocabFileName();
         startActivity(new Intent(getBaseContext(), OverviewVocabActivity.class));
+    }
+
+    protected JSONObject loadJSONFile(File file, String jsonPreset) {
+
+        String jsonFileAsString;
+        try {
+            InputStream is = new FileInputStream(file);
+
+            int size = is.available();
+
+            byte[] buffer = new byte[size];
+
+            is.read(buffer);
+
+            is.close();
+
+            jsonFileAsString = new String(buffer, StandardCharsets.UTF_8);
+
+            if(!jsonFileAsString.isEmpty())
+                return new JSONObject(jsonFileAsString);
+            else{
+                return new JSONObject("{\n" +
+                        "  \"vocabs\":\n" +
+                        "  [\n" +
+                        "    \n" +
+                        "  ]\n" +
+                        "}");
+            }
+
+        } catch (JSONException | IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    private File setUpFile(String fileName) {
+        File f = new File(this.getBaseContext().getFilesDir(), fileName);
+        if(f.exists()) {
+            return f;
+        }
+        else {
+            try{
+                f.createNewFile();
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+        return f;
     }
 }

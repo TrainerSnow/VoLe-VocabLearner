@@ -168,9 +168,9 @@ public class OverviewVocabActivity extends AppCompatActivity {
     }
 
     public static void removeItem(int position){
-        if(vocabArray.size() == 1 || vocabArrayJSON.length() == 1){
+        /*if(vocabArray.size() == 1 || vocabArrayJSON.length() == 1){
             return;
-        }
+        }*/
         vocabArrayJSON.remove(position);
         vocabArray.remove(position);
         vocabView.setAdapter(vocabAdapter);

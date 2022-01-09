@@ -43,6 +43,8 @@ public class AskVocabWriteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ask_vocab_write);
+        getSupportActionBar().setTitle(Variables.currentVocabSetName);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#14397d")));
 
         vocabShowTextView =  findViewById(R.id.vocabShowView);
         vocabInputEditText = findViewById(R.id.vocabInputEditText);
@@ -61,10 +63,6 @@ public class AskVocabWriteActivity extends AppCompatActivity {
 
         assignVocab();
         showVocab();
-
-        getSupportActionBar().setTitle(Variables.currentVocabSetName);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#14397d")));
-
 
         showSolutionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -338,4 +336,12 @@ public class AskVocabWriteActivity extends AppCompatActivity {
             pair.hasBeenAsked = false;
         }
     }
+
+    /*private void checkIfVocabarrayHasVocabs(){
+        if(vocabsArray.size() == 0){
+            finish();
+            startActivity(new Intent(getBaseContext(), HomeActivity.class));
+            Toast.makeText(getBaseContext(), "In diesemVokabelset sind keine Vokabeln verfügbar. Bitte füge erst welche Hinzu", Toast.LENGTH_LONG).show();
+        }
+    }*/
 }
