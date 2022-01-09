@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Groß/Kleinschreibung"
+            android:text="@string/setting_capitalization"
             android:layout_weight="1"
             android:textColor="@color/dark_blue"/>
 
@@ -35,7 +35,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Schreibmodus"
+            android:text="@string/setting_writemode"
             android:layout_weight="1"
             android:textColor="@color/dark_blue"/>
 
@@ -55,7 +55,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cheatmodus"
+            android:text="@string/setting_cheatmode"
             android:layout_weight="1"
             android:textColor="@color/dark_blue"/>
 
@@ -71,7 +71,7 @@
     <Button
         style="@style/blue_button"
         android:id="@+id/applySettingsButton"
-        android:text="Speichern"/>
+        android:text="@string/save"/>
 
 
 

@@ -39,7 +39,7 @@
             android:clickable="true"
             android:focusable="true"
             android:gravity="center"
-            android:text="TextView"
+            android:text=""
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="@color/light_blue"/>
 
@@ -55,7 +55,7 @@
 
         <Button
             style="@style/blue_button"
-            android:text="Zurück"
+            android:text="@string/back"
             android:layout_margin="10dp"
             android:id="@+id/returnToMainButton2"/>
 

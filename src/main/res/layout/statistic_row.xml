@@ -11,7 +11,7 @@
         android:id="@+id/statisticsName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Default StatisticName"
+        android:text=""
         android:layout_weight="1"
         android:textAlignment="textStart"
         android:textColor="@color/light_blue"/>
@@ -20,7 +20,7 @@
         android:id="@+id/statisticsValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Default Statistics Value"
+        android:text=""
         android:layout_weight="1"
         android:textAlignment="textEnd"
         android:textColor="@color/light_blue"/>

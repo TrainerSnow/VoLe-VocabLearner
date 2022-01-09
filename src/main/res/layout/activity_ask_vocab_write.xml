@@ -47,7 +47,7 @@
             android:id="@+id/vocabShowView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Default Vocab"
+            android:text=""
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:minHeight="150dp"
             android:gravity="center"
@@ -64,7 +64,7 @@
             android:id="@+id/vocabInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Solution"
+            android:hint="@string/solution"
             android:inputType="textPersonName"
             android:textColor="@color/light_blue"
             tools:ignore="TouchTargetSizeCheck" />
@@ -80,7 +80,7 @@
 
         <Button
             style="@style/blue_button"
-            android:text="Eingeben"
+            android:text="@string/apply"
             android:id="@+id/applyButton"
             />
 
@@ -96,7 +96,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/returnToMainButton"
             style="@style/blue_button"
-            android:text="Zurück"/>
+            android:text="@string/back"/>
 
 
     </LinearLayout>

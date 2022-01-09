@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">VoLe - Vocab Learner</string>
     <string name="title_activity_ask_vocab_write">AskVocabWriteActivity</string>
-    <!-- Strings used for fragments for navigation -->
+    <string name="setname">Setname</string>
+    <string name="setdescription">Setbeschreibung</string>
+    <string name="back">Zurück</string>
+    <string name="solution">Solution</string>
+    <string name="apply">Eingeben</string>
+    <string name="setting_capitalization">Groß/Kleinschreibung</string>
+    <string name="setting_writemode">Schreibmodus</string>
+    <string name="setting_cheatmode">Cheatmodus</string>
+    <string name="save">Speichern</string>
+    <string name="vocabname">Deutsche Vokabel</string>
+    <string name="vocabvalue">Übersetzte Vokabel</string>
 </resources>
