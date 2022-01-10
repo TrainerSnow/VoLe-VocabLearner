@@ -16,4 +16,7 @@
     <string name="cheatmode_is_off">Cheatmodus ist aus!</string>
     <string name="deleted">Gelöscht: %s - %s</string>
     <string name="vocab_cheatmode_not_count_stats">Vokabeln die mit Cheatmodus eingegeben wurden zählen nicht zu den Statistiken</string>
+    <string name="delete_set_dialog_message">Willst du das Set Wirklich löschen?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
 </resources>
