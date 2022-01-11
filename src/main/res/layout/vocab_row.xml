@@ -16,6 +16,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/light_blue"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:id="@+id/vocabPairIndex"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="4"
             android:textSize="20sp"
             android:textAlignment="center"
