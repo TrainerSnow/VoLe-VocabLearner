@@ -36,6 +36,16 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/light_blue"
+        android:id="@+id/vocabWriteCurrentScoreView"
+        android:text="@string/score"
+        android:textSize="20sp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,8 +55,8 @@
 
         <TextView
             android:id="@+id/vocabShowView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text=""
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:minHeight="150dp"

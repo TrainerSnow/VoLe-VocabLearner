@@ -36,7 +36,9 @@ public class AskVocabWriteActivity extends AppCompatActivity {
     private JSONObject vocabsObject;
     private EditText vocabInputEditText;
     private TextView vocabShowTextView;
+    private TextView currentVocabScoreView;
     private ArrayList<VocabPair> vocabsArray = new ArrayList<>();
+    private int currentScore = 0;
 
 
     @Override
@@ -48,6 +50,7 @@ public class AskVocabWriteActivity extends AppCompatActivity {
 
         vocabShowTextView =  findViewById(R.id.vocabShowView);
         vocabInputEditText = findViewById(R.id.vocabInputEditText);
+        currentVocabScoreView = findViewById(R.id.vocabWriteCurrentScoreView);
         View showSolutionButton = findViewById(R.id.showSolutionButton);
         View deleteVocabButton = findViewById(R.id.deleteVocabButton);
         View returnToMain = findViewById(R.id.returnToMainButton);
@@ -63,6 +66,7 @@ public class AskVocabWriteActivity extends AppCompatActivity {
 
         assignVocab();
         showVocab();
+        showScore();
 
         showSolutionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,6 +153,8 @@ public class AskVocabWriteActivity extends AppCompatActivity {
         }catch(JSONException e){
             e.printStackTrace();
         }
+        currentScore++;
+        showScore();
         vocabsArray.get(currentRandom).setNumGuessedRight(vocabsArray.get(currentRandom).getNumGuessedRight() + 1);
         originalVocabsJSONArray = ArrayListToJSONArray(vocabsArray);
         updateVocJSONFile(vocabsObject);
@@ -175,6 +181,8 @@ public class AskVocabWriteActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        currentScore = 0;
+        showScore();
         vocabsArray.get(currentRandom).setNumGuessedWrong(vocabsArray.get(currentRandom).getNumGuessedWrong() + 1);
         originalVocabsJSONArray = ArrayListToJSONArray(vocabsArray);
         updateVocJSONFile(vocabsObject);
@@ -337,11 +345,7 @@ public class AskVocabWriteActivity extends AppCompatActivity {
         }
     }
 
-    /*private void checkIfVocabarrayHasVocabs(){
-        if(vocabsArray.size() == 0){
-            finish();
-            startActivity(new Intent(getBaseContext(), HomeActivity.class));
-            Toast.makeText(getBaseContext(), "In diesemVokabelset sind keine Vokabeln verfügbar. Bitte füge erst welche Hinzu", Toast.LENGTH_LONG).show();
-        }
-    }*/
+    private void showScore(){
+        currentVocabScoreView.setText(getResources().getString(R.string.score) + " " +currentScore);
+    }
 }

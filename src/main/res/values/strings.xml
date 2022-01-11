@@ -19,4 +19,5 @@
     <string name="delete_set_dialog_message">Willst du das Set Wirklich löschen?</string>
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
+    <string name="score">Highscore:</string>
 </resources>
