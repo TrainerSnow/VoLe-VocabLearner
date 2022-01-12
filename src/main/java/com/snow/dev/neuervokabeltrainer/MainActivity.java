@@ -49,15 +49,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupVariables() {
         Variables.settingsExternalFile = setUpFile(Variables.SETTINGS_FILE_NAME);
-        Variables.vocabsExternalFile = setUpFile(Variables.VOCAB_FILE_NAME);
         Variables.vocabsetsExternalFile = setUpFile(Variables.VOCAB_SET_FILE_NAME);
-        Variables.statisticsExternalFile = setUpFile(Variables.STATISTICS_FILE_NAME);;
+        Variables.statisticsExternalFile = setUpFile(Variables.STATISTICS_FILE_NAME);
+        Variables.vocabsExternalFile = setUpFile(Variables.VOCAB_FILE_NAME);
 
         Variables.settingsJSONObject = loadJSONFile(Variables.settingsExternalFile, Variables.SETTINGS_FILE_PRESET);
-        Variables.vocabsJSONObject = loadJSONFile(Variables.vocabsExternalFile, Variables.VOCAB_FILE_PRESET);
         Variables.vocabsetJSONObject = loadJSONFile(Variables.vocabsetsExternalFile, Variables.VOCAB_SET_FILE_PRESET);
         Variables.statisticsJSONObject = loadJSONFile(Variables.statisticsExternalFile, Variables.STATISTICS_FILE_PRESET);
-        //Variables.statisticsJSONObject = loadJSONObjectFromPreset(Variables.STATISTICS_FILE_PRESET);
+        Variables.vocabsJSONObject = loadJSONFile(Variables.vocabsExternalFile, Variables.VOCAB_FILE_PRESET);
+        Variables.vocabsJSONObject = loadJSONObjectFromPreset(Variables.VOCAB_FILE_PRESET);
+
 
         updateJSONFile(Variables.settingsJSONObject, Variables.SETTINGS_FILE_NAME);
         updateJSONFile(Variables.vocabsJSONObject, Variables.VOCAB_FILE_NAME);
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         updateJSONFile(Variables.statisticsJSONObject, Variables.STATISTICS_FILE_NAME);
 
         try {
+            Log.d(TAG, Variables.vocabsJSONObject.toString());
             Variables.vocabsJSONArray = Variables.vocabsJSONObject.getJSONArray("vocabs");
             Variables.vocabSetTitles = Variables.vocabsetJSONObject.getJSONArray("title");
             Variables.vocabSetDescriptions = Variables.vocabsetJSONObject.getJSONArray("description");
@@ -91,9 +93,12 @@ public class MainActivity extends AppCompatActivity {
 
             jsonFileAsString = new String(buffer, StandardCharsets.UTF_8);
 
-            if(!jsonFileAsString.isEmpty())
+            if(!jsonFileAsString.isEmpty()) {
+                Log.d(TAG, "Didn't Use Preset");
                 return new JSONObject(jsonFileAsString);
+            }
             else{
+                Log.d(TAG, "Used Preset");
                 return new JSONObject(jsonPreset);
             }
 
@@ -121,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
         else {
             try{
                 f.createNewFile();
+                Log.d(TAG, "Manually created File");
             }catch(IOException e){
                 e.printStackTrace();
             }

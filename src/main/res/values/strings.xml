@@ -20,4 +20,5 @@
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
     <string name="score">Highscore:</string>
+    <string name="reset">Zurücksetzen</string>
 </resources>

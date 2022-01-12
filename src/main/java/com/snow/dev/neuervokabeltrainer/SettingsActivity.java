@@ -19,6 +19,13 @@ public class SettingsActivity extends AppCompatActivity {
     private SwitchCompat activateWriteModeSwitch;
     private SwitchCompat activateCheatModeSwitch;
 
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        updateJSONFile(Variables.settingsJSONObject, Variables.SETTINGS_FILE_NAME);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

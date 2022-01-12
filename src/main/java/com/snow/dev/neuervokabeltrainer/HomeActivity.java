@@ -31,6 +31,12 @@ public class HomeActivity extends VoLeBaseActivity {
     private JSONArray vocabArray;
     private File vocabFile;
 
+    @Override
+    public void onPause(){
+        super.onPause();
+        updateJSONFile(Variables.vocabsetJSONObject, VOCAB_SET_FILE_NAME);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,11 +121,6 @@ public class HomeActivity extends VoLeBaseActivity {
         });
     }
 
-    @Override
-    public void onPause(){
-        super.onPause();
-        updateJSONFile(Variables.vocabsetJSONObject, VOCAB_FILE_NAME);
-    }
 
     public static void removeItem (int remove){
             vocabSetsArray.remove(remove);

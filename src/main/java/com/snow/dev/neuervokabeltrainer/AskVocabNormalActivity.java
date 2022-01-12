@@ -33,6 +33,13 @@ public class AskVocabNormalActivity extends AppCompatActivity {
     JSONObject vocabsObject;
 
     @Override
+    protected void onPause(){
+        super.onPause();
+        updateStatJSONFile(Variables.statisticsJSONObject);
+        updateVocJSONFile(vocabsObject);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ask_vocab_normal);

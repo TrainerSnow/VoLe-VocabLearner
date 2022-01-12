@@ -30,6 +30,14 @@ public class OverviewVocabActivity extends AppCompatActivity {
     static JSONObject vocabsJSONObject;
     private static final String TAG = "OverviewVocabActivity";
 
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        updateJSONFile(vocabsJSONObject, Variables.currentVocabulary);
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,12 +111,6 @@ public class OverviewVocabActivity extends AppCompatActivity {
                 startActivity(new Intent(getBaseContext(), VocabSetStatisticsActivity.class));
             }
         });
-    }
-
-    @Override
-    public void onPause(){
-        super.onPause();
-        updateJSONFile(vocabsJSONObject, Variables.currentVocabulary);
     }
 
     private void loadJSONArrayToArrayList() {

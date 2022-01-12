@@ -40,6 +40,13 @@ public class AskVocabWriteActivity extends AppCompatActivity {
     private ArrayList<VocabPair> vocabsArray = new ArrayList<>();
     private int currentScore = 0;
 
+    @Override
+    protected void onPause(){
+        super.onPause();
+        updateStatJSONFile(Variables.statisticsJSONObject);
+        updateVocJSONFile(vocabsObject);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

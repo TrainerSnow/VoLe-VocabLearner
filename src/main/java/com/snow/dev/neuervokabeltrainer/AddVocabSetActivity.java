@@ -18,6 +18,12 @@ import java.util.Locale;
 public class AddVocabSetActivity extends AppCompatActivity {
 
     @Override
+    protected void onPause(){
+        super.onPause();
+        updateJSONFile(Variables.vocabsetJSONObject, Variables.VOCAB_SET_FILE_NAME);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vocab_set);
