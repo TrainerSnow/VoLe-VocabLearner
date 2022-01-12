@@ -1,6 +1,7 @@
 package com.snow.dev.neuervokabeltrainer;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -27,6 +28,7 @@ public class StatisticsActivity extends AppCompatActivity {
 
         ListView statisticsListView = findViewById(R.id.statisticsListView);
         ArrayList<StatisticCategory> categories = new ArrayList<>();
+        ListViewAdapterStatisticCategory adapter = new ListViewAdapterStatisticCategory(getBaseContext(), categories, R.layout.statistics_category_row);
         JSONObject categoriesObject = Variables.statisticsJSONObject;
         JSONObject generalStats;
         JSONObject normalStats;
@@ -42,12 +44,23 @@ public class StatisticsActivity extends AppCompatActivity {
         resetStatsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for(StatisticCategory category : categories){
-                    for(Statistic stat : category.getStatistics()){
-                        stat.setValue(0);
-                    }
+                categories.get(0).getStatistics().get(0).setValue(0);
+                categories.get(1).getStatistics().get(0).setValue(0);
+                categories.get(2).getStatistics().get(0).setValue(0);
+                categories.get(2).getStatistics().get(1).setValue(0);
+                categories.get(2).getStatistics().get(2).setValue(0);
+
+                try{
+                    Variables.statisticsJSONObject.getJSONObject("general").put("numAppOpened", 0);
+                    Variables.statisticsJSONObject.getJSONObject("normalmode").put("numChanged", 0);
+                    Variables.statisticsJSONObject.getJSONObject("writemode").put("numRight", 0);
+                    Variables.statisticsJSONObject.getJSONObject("writemode").put("numWrong", 0);
+                    Variables.statisticsJSONObject.getJSONObject("writemode").put("numTotal", 0);
+                }catch(JSONException e){
+                    e.printStackTrace();
                 }
                 updateStatJSONFile(Variables.statisticsJSONObject);
+                statisticsListView.setAdapter(adapter);
             }
         });
 
@@ -74,7 +87,6 @@ public class StatisticsActivity extends AppCompatActivity {
         categories.add(normalCategory);
         categories.add(writeCategory);
 
-        ListViewAdapterStatisticCategory adapter = new ListViewAdapterStatisticCategory(getBaseContext(), categories, R.layout.statistics_category_row);
         statisticsListView.setAdapter(adapter);
     }
 
