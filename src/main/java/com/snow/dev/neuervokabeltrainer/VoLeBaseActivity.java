@@ -26,10 +26,9 @@ public class VoLeBaseActivity extends AppCompatActivity {
     public static final String VOCAB_SET_FILE_NAME = "vocabsets.json";
     public static final String STATISTICS_FILE_NAME = "statistics.json";
     public static final String VOCAB_FILE_PRESET = "{\n" +
-            "  \"vocabs\": \n" +
+            "  \"vocabs\":\n" +
             "  [\n" +
-            "    [\"Beispielvokabel 1\" , \"Examplevocab 1\", 0, 0],\n" +
-            "    [\"Beispielvokabel 2\" , \"Examplevocab 2\", 0, 0]\n" +
+            "    \n" +
             "  ]\n" +
             "}";
     public static final String SETTINGS_FILE_PRESET = "{\n" +
@@ -63,7 +62,7 @@ public class VoLeBaseActivity extends AppCompatActivity {
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
         getSupportActionBar().setTitle("");
@@ -78,7 +77,7 @@ public class VoLeBaseActivity extends AppCompatActivity {
      * Used to read the Data from a File into JSONObject Format
      */
 
-    protected static JSONObject loadJSONFile(File file, String preset) {
+    public JSONObject loadJSONFile(File file, String preset) {
 
         String jsonFileAsString;
         try {
@@ -113,7 +112,7 @@ public class VoLeBaseActivity extends AppCompatActivity {
      * Used to search for a File, or create it, if it hasnt already
      */
 
-    private File setUpFile(String fileName) {
+    public File setUpFile(String fileName) {
         File f = new File(this.getBaseContext().getFilesDir(), fileName);
         if(f.exists()) {
             return f;
@@ -136,7 +135,7 @@ public class VoLeBaseActivity extends AppCompatActivity {
      */
 
 
-    private void updateVocJSONFile(JSONObject j ,String fileName){
+    public void updateJSONFile(JSONObject j ,String fileName){
         String jsonString = j.toString();
         FileOutputStream fos = null;
 

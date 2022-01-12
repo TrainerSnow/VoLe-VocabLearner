@@ -22,7 +22,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends VoLeBaseActivity {
 
     static ListView vocabSetsView;
     public static ArrayList<VocabSet> vocabSetsArray;
@@ -30,7 +30,6 @@ public class HomeActivity extends AppCompatActivity {
     private JSONObject vocabObject;
     private JSONArray vocabArray;
     private File vocabFile;
-    private static final String TAG = "HomeActivity";
 
 
     @Override
@@ -119,9 +118,8 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public void onPause(){
         super.onPause();
-        updateJSONFile(Variables.vocabsetJSONObject);
+        updateJSONFile(Variables.vocabsetJSONObject, VOCAB_FILE_NAME);
     }
-
 
     public static void removeItem (int remove){
             vocabSetsArray.remove(remove);
@@ -131,7 +129,12 @@ public class HomeActivity extends AppCompatActivity {
             Variables.vocabSetVocabularyPath.remove(remove);
     }
 
-    private void updateJSONFile(JSONObject j){
+    private void onSettingsButton(int position){
+        Variables.currentVocabulary = vocabSetsArray.get(position).getVocabFileName();
+        startActivity(new Intent(getBaseContext(), OverviewVocabActivity.class));
+    }
+
+    /*private void updateJSONFile(JSONObject j){
         String jsonString = j.toString();
         FileOutputStream fos = null;
 
@@ -150,14 +153,9 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         }
-    }
+    }*/
 
-    private void onSettingsButton(int position){
-        Variables.currentVocabulary = vocabSetsArray.get(position).getVocabFileName();
-        startActivity(new Intent(getBaseContext(), OverviewVocabActivity.class));
-    }
-
-    protected JSONObject loadJSONFile(File file, String jsonPreset) {
+    /*public JSONObject loadJSONFile(File file, String jsonPreset) {
 
         String jsonFileAsString;
         try {
@@ -188,10 +186,10 @@ public class HomeActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return null;
-    }
+    }*/
 
 
-    private File setUpFile(String fileName) {
+    /*private File setUpFile(String fileName) {
         File f = new File(this.getBaseContext().getFilesDir(), fileName + ".json");
         if(f.exists()) {
             return f;
@@ -204,5 +202,5 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
         return f;
-    }
+    }*/
 }
