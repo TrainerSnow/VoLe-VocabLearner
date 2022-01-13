@@ -19,6 +19,9 @@ public class InstructionsVocabSetOverview extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructions_vocab_set_overview);
 
+        getSupportActionBar().setTitle("");
+        getSupportActionBar().hide();
+
         findViewById(R.id.returnToMainButton3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
