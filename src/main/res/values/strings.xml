@@ -11,7 +11,7 @@
     <string name="setting_cheatmode">Cheatmodus</string>
     <string name="save">Speichern</string>
     <string name="vocabname">Vokabel</string>
-    <string name="vocabvalue">Übersetzte Vokabel</string>
+    <string name="vocabvalue">Lösung</string>
     <string name="no_vocabs_in_set">Dieses Set hat keine Vokabeln. Bitte füge erst welche Hinzu</string>
     <string name="cheatmode_is_off">Cheatmodus ist aus!</string>
     <string name="deleted">Gelöscht: %s - %s</string>
@@ -28,4 +28,5 @@
     <string name="instructions_back_to_home">Klicke auf dieses Symbol um zurück zur Übersicht zu kommen</string>
     <string name="instructions_add_vocab">Klicke dieses Symbol um die aktuelle Vokabel zu der Sammlung zu speichern</string>
     <string name="instructions_stats_vocset">Klicke dieses Symbol um die Statistiken für die aktuelle Sammlung zu sehen</string>
+    <string name="voc_set_alr_exists">Dieses Vokabelset existiert bereits. Bitte wähle einen anderen Namen</string>
 </resources>

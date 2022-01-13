@@ -3,11 +3,15 @@ package com.snow.dev.neuervokabeltrainer;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -16,6 +20,8 @@ import java.io.IOException;
 import java.util.Locale;
 
 public class AddVocabSetActivity extends AppCompatActivity {
+
+    private static final String TAG = "AddVocabSetActivity";
 
     @Override
     protected void onPause(){
@@ -27,6 +33,8 @@ public class AddVocabSetActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vocab_set);
+
+        Log.d(TAG, "onCreate: " + Variables.vocabsetJSONObject.toString());
 
         getSupportActionBar().setTitle("");
         getSupportActionBar().hide();
@@ -40,6 +48,14 @@ public class AddVocabSetActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String newVocSetTitle = titleInput.getText().toString();
+                try {
+                    if(vocabSetNameAlrExists(newVocSetTitle)){
+                        Toast.makeText(getBaseContext(), getResources().getString(R.string.voc_set_alr_exists), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 String newVocSetDesc = descriptionInput.getText().toString();
                 titleInput.getBackground().mutate().setColorFilter((getResources().getColor(android.R.color.holo_green_light)), PorterDuff.Mode.SRC_ATOP);
                 descriptionInput.getBackground().mutate().setColorFilter((getResources().getColor(android.R.color.holo_green_light)), PorterDuff.Mode.SRC_ATOP);
@@ -114,5 +130,15 @@ public class AddVocabSetActivity extends AppCompatActivity {
         } catch(IOException e){
             e.printStackTrace();
         }
+    }
+
+    private boolean vocabSetNameAlrExists(String name)throws JSONException {
+        JSONArray titles = Variables.vocabsetJSONObject.getJSONArray("title");
+        for(int i = 0; i < titles.length(); i++){
+            if(name.equals(titles.getString(i))){
+                return true;
+            }
+        }
+        return false;
     }
 }

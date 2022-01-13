@@ -9,7 +9,7 @@
     <string name="setting_cheatmode">Cheatmode</string>
     <string name="save">Save</string>
     <string name="vocabname">Vocab</string>
-    <string name="vocabvalue">Translated Vocab</string>
+    <string name="vocabvalue">Solution</string>
     <string name="no_vocabs_in_set">This has has no vocab. Please add some.</string>
     <string name="cheatmode_is_off">Cheatmode is disabled!</string>
     <string name="deleted">Deleted: %s - %s</string>
@@ -29,4 +29,5 @@
     <string name="setdescription">Set description</string>
     <string name="setname">Set name</string>
     <string name="title_activity_ask_vocab_write">AskVocabWriteActivity</string>
+    <string name="voc_set_alr_exists">This vocab set already exists. Please Choose another name.</string>
 </resources>
