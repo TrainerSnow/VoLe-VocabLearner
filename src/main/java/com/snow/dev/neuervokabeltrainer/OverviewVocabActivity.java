@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -54,6 +55,7 @@ public class OverviewVocabActivity extends AppCompatActivity {
         View setNewVocabButton = findViewById(R.id.setNewVocabButton);
         View saveAndReturn = findViewById(R.id.saveAndReturn);
         View vocabSetStatsButton = findViewById(R.id.vocabSetStatsButton);
+        View startInstructionsSetActivity = findViewById(R.id.startInstructionsSetButton);
 
         vocabsJSONObject = loadJSONFile(new File(getBaseContext().getFilesDir() + "/" + Variables.currentVocabulary + ".json"));
         Log.d(TAG, vocabsJSONObject.toString());
@@ -73,6 +75,14 @@ public class OverviewVocabActivity extends AppCompatActivity {
                 //For ArrayList
                 String newName = vocabNameInput.getText().toString();
                 String newValue = vocabValueInput.getText().toString();
+                if(newName.equals("") || newValue.equals("")){
+                    Toast.makeText(getBaseContext(), "Bitte füge eine Richtige Vokabel hinzu!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+
+
+
                 VocabPair newVocabPair = new VocabPair(newName, newValue);
                 vocabArray.add(newVocabPair);
                 vocabView.setAdapter(vocabAdapter);
@@ -109,6 +119,13 @@ public class OverviewVocabActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getBaseContext(), VocabSetStatisticsActivity.class));
+            }
+        });
+
+        startInstructionsSetActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), InstructionsVocabSetOverview.class));
             }
         });
     }

@@ -35,14 +35,21 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_statistics"
             android:background="@drawable/primary_button_round"
-            android:id="@+id/startStatisticsButton"/>
+            android:id="@+id/startStatisticsButton"
+            android:layout_marginEnd="10dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_help"
+            android:id="@+id/startInstructionsHomeButton"
+            android:background="@drawable/primary_button_round" />
 
     </LinearLayout>
 
-
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/vocabSetsView"/>
 
 </LinearLayout>

@@ -21,4 +21,11 @@
     <string name="no">Nein</string>
     <string name="score">Highscore:</string>
     <string name="reset">Zurücksetzen</string>
+    <string name="instructions_setting">Klicke auf dieses Symbol um in die Einstellungen zu gelangen</string>
+    <string name="instructions_stats">Klicke auf dieses Symbol um deine Statistiken anzusehen</string>
+    <string name="instructions_add_set">Klicke auf dieses Symbol, um eine neue Vokabelsammlung hinzuzufügen</string>
+    <string name="instructions_voc_set_long_tap">Klicke lange auf ein Vokabelset, um es zu bearbeiten, und neue Vokabeln hinzuzufügen</string>
+    <string name="instructions_back_to_home">Klicke auf dieses Symbol um zurück zur Übersicht zu kommen</string>
+    <string name="instructions_add_vocab">Klicke dieses Symbol um die aktuelle Vokabel zu der Sammlung zu speichern</string>
+    <string name="instructions_stats_vocset">Klicke dieses Symbol um die Statistiken für die aktuelle Sammlung zu sehen</string>
 </resources>

@@ -51,6 +51,7 @@ public class HomeActivity extends VoLeBaseActivity {
         View addNewVocabSetButton = findViewById(R.id.addNewVocabSetButton);
         View startSettingsButton = findViewById(R.id.startSettingsButton);
         View startStatisticsButton = findViewById(R.id.startStatisticsButton);
+        View showInstructionsHomeButton = findViewById(R.id.startInstructionsHomeButton);
 
         try {
             for (int i = 0; i < Variables.vocabSetTitles.length(); i++) {
@@ -117,6 +118,13 @@ public class HomeActivity extends VoLeBaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getBaseContext(),StatisticsActivity.class));
+            }
+        });
+
+        showInstructionsHomeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(),InstructionsHomeActivity.class));
             }
         });
     }
