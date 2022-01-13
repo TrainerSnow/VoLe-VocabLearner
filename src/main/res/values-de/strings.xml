@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VoLe - Vocab Learner</string>
+    <string name="title_activity_ask_vocab_write">AskVocabWriteActivity</string>
+    <string name="setname">Sammlungsname</string>
+    <string name="setdescription">Sammlungsbeschreibung</string>
+    <string name="back">Zurück</string>
+    <string name="solution">Lösung</string>
+    <string name="apply">Eingeben</string>
+    <string name="setting_capitalization">Groß/Kleinschreibung</string>
+    <string name="setting_writemode">Schreibmodus</string>
+    <string name="setting_cheatmode">Cheatmodus</string>
+    <string name="save">Speichern</string>
+    <string name="vocabname">Vokabel</string>
+    <string name="vocabvalue">Übersetzte Vokabel</string>
+    <string name="no_vocabs_in_set">Dieses Set hat keine Vokabeln. Bitte füge erst welche Hinzu</string>
+    <string name="cheatmode_is_off">Cheatmodus ist aus!</string>
+    <string name="deleted">Gelöscht: %s - %s</string>
+    <string name="vocab_cheatmode_not_count_stats">Vokabeln die mit Cheatmodus eingegeben wurden zählen nicht zu den Statistiken</string>
+    <string name="delete_set_dialog_message">Willst du das Set Wirklich löschen?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+    <string name="score">Highscore:</string>
+    <string name="reset">Zurücksetzen</string>
+    <string name="instructions_setting">Klicke auf dieses Symbol um in die Einstellungen zu gelangen</string>
+    <string name="instructions_stats">Klicke auf dieses Symbol um deine Statistiken anzusehen</string>
+    <string name="instructions_add_set">Klicke auf dieses Symbol, um eine neue Vokabelsammlung hinzuzufügen</string>
+    <string name="instructions_voc_set_long_tap">Klicke lange auf ein Vokabelset, um es zu bearbeiten, und neue Vokabeln hinzuzufügen</string>
+    <string name="instructions_back_to_home">Klicke auf dieses Symbol um zurück zur Übersicht zu kommen</string>
+    <string name="instructions_add_vocab">Klicke dieses Symbol um die aktuelle Vokabel zu der Sammlung zu speichern</string>
+    <string name="instructions_stats_vocset">Klicke dieses Symbol um die Statistiken für die aktuelle Sammlung zu sehen</string>
+</resources>
