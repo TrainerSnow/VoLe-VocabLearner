@@ -13,9 +13,9 @@
         android:gravity="center">
 
         <ImageView
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:background="@drawable/logo_blue_bg" />
+            android:layout_width="300dp"
+            android:layout_height="500dp"
+            android:background="@drawable/logoloadingscreen"/>
 
     </LinearLayout>
 
