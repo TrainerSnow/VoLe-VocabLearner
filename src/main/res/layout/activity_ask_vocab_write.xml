@@ -61,7 +61,8 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:minHeight="150dp"
             android:gravity="center"
-            android:padding="20dp"/>
+            android:padding="20dp"
+            android:autoSizeTextType="uniform"/>
 
     </LinearLayout>
 
