@@ -36,15 +36,18 @@
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textAlignment="center"
         android:textColor="@color/light_blue"
         android:id="@+id/vocabWriteCurrentScoreView"
         android:text="@string/score"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        style="@style/blue_button"
+        android:layout_gravity="center"
+        android:padding="20dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,13 +59,12 @@
         <TextView
             android:id="@+id/vocabShowView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text=""
-            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-            android:minHeight="150dp"
+            android:textSize="40sp"
+            android:minHeight="100dp"
             android:gravity="center"
-            android:padding="20dp"
-            android:autoSizeTextType="uniform"/>
+            android:padding="20dp" />
 
     </LinearLayout>
 
@@ -78,7 +80,8 @@
             android:hint="@string/solution"
             android:inputType="textPersonName"
             android:textColor="@color/light_blue"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck"
+            android:textColorHint="@color/light_blue"/>
 
     </LinearLayout>
 
