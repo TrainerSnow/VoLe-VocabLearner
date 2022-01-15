@@ -50,7 +50,8 @@ public class Variables {
             "}";
     public static final String STATISTICS_FILE_PRESET = "{\n" +
             "  \"general\": {\n" +
-            "    \"numAppOpened\": 0\n" +
+            "    \"numAppOpened\": 0,\n" +
+            "    \"highestHighScore\": 0\n" +
             "  },\n" +
             "  \"normalmode\" : {\n" +
             "    \"numChanged\" : 0\n" +

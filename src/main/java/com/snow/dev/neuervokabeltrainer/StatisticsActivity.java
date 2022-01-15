@@ -18,6 +18,8 @@ import java.util.ArrayList;
 
 public class StatisticsActivity extends AppCompatActivity {
 
+    private int highestHighScore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +41,9 @@ public class StatisticsActivity extends AppCompatActivity {
         Statistic numWrongWriteMode = null;
         Statistic numTotalWriteMode = null;
         Statistic rate = null;
+        Statistic numHighestHighScore = null;
         Button resetStatsButton = findViewById(R.id.resetStatsButton);
+        highestHighScore = getHighestHightscore();
 
         resetStatsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +73,7 @@ public class StatisticsActivity extends AppCompatActivity {
             normalStats = categoriesObject.getJSONObject("normalmode");
             writeStats = categoriesObject.getJSONObject("writemode");
             numAppOpened = new Statistic("Appöffnungen", generalStats.getInt("numAppOpened"));
+            numHighestHighScore = new Statistic("Höchster Highcore", highestHighScore);
             numChanged = new Statistic("Durchgänge", normalStats.getInt("numChanged"));
             numRightWriteMode = new Statistic("Richtige Lösungen", writeStats.getInt("numRight"));
             numWrongWriteMode = new Statistic("Falsche Lösungen", writeStats.getInt("numWrong"));
@@ -79,7 +84,7 @@ public class StatisticsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        StatisticCategory generalCategory = new StatisticCategory("Generalle Statistik", numAppOpened);
+        StatisticCategory generalCategory = new StatisticCategory("Generalle Statistik", numAppOpened, numHighestHighScore);
         StatisticCategory normalCategory = new StatisticCategory("Normaler Modus", numChanged);
         StatisticCategory writeCategory = new StatisticCategory("Schreibmodus", numRightWriteMode, numWrongWriteMode, numTotalWriteMode, rate);
 
@@ -88,6 +93,22 @@ public class StatisticsActivity extends AppCompatActivity {
         categories.add(writeCategory);
 
         statisticsListView.setAdapter(adapter);
+    }
+
+    private int getHighestHightscore() {
+        try{
+            int ret = -1;
+            int currentStreak;
+            for (int i = 0; i < Variables.vocabsetJSONObject.getJSONArray("streak").length(); i++){
+                currentStreak = Variables.vocabsetJSONObject.getJSONArray("streak").getInt(i);
+                if(currentStreak > ret)
+                    ret = currentStreak;
+            }
+            return ret;
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     private void updateStatJSONFile(JSONObject j){
