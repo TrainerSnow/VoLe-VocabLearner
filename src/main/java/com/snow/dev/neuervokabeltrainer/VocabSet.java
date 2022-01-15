@@ -10,6 +10,10 @@ public class VocabSet {
     String vocabFileName;
     int streak;
 
+    public void setStreak(int streak) {
+        this.streak = streak;
+    }
+
     public int getStreak() {
         return streak;
     }

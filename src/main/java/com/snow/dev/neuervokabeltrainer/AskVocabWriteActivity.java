@@ -2,9 +2,11 @@ package com.snow.dev.neuervokabeltrainer;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -29,6 +31,7 @@ import java.util.Random;
 public class AskVocabWriteActivity extends AppCompatActivity {
 
     private boolean cheatButtonWasPushed = false;
+    private TextView highScoreView;
     private int currentRandom = 0;
     private String currentSolution;
     private String currentQuestion;
@@ -39,6 +42,7 @@ public class AskVocabWriteActivity extends AppCompatActivity {
     private TextView currentVocabScoreView;
     private ArrayList<VocabPair> vocabsArray = new ArrayList<>();
     private int currentScore = 0;
+    private static final String TAG = "AskVocabWriteActivity";
 
     @Override
     protected void onPause(){
@@ -51,96 +55,99 @@ public class AskVocabWriteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ask_vocab_write);
-        getSupportActionBar().setTitle(Variables.currentVocabSetName);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#14397d")));
+        try{
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_ask_vocab_write);
+            getSupportActionBar().setTitle(Variables.currentVocabSetName);
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#14397d")));
 
-        vocabShowTextView =  findViewById(R.id.vocabShowView);
-        vocabInputEditText = findViewById(R.id.vocabInputEditText);
-        currentVocabScoreView = findViewById(R.id.vocabWriteCurrentScoreView);
-        View showSolutionButton = findViewById(R.id.showSolutionButton);
-        View deleteVocabButton = findViewById(R.id.deleteVocabButton);
-        View returnToMain = findViewById(R.id.returnToMainButton);
-        View applyButton = findViewById(R.id.applyButton);
-        File vocabsFile = setUpFile(Variables.currentVocabulary);
-        vocabsObject = loadJSONFile(vocabsFile);
-        try {
+            vocabShowTextView = findViewById(R.id.vocabShowView);
+            vocabInputEditText = findViewById(R.id.vocabInputEditText);
+            currentVocabScoreView = findViewById(R.id.currentScoreView);
+            View showSolutionButton = findViewById(R.id.showSolutionButton);
+            View deleteVocabButton = findViewById(R.id.deleteVocabButton);
+            View returnToMain = findViewById(R.id.returnToMainButton);
+            highScoreView = findViewById(R.id.highScoreView);
+            View applyButton = findViewById(R.id.applyButton);
+            File vocabsFile = setUpFile(Variables.currentVocabulary);
+            vocabsObject = loadJSONFile(vocabsFile);
             originalVocabsJSONArray = vocabsObject.getJSONArray("vocabs");
-        } catch (JSONException e) {
+            vocabsArray = JSONArrayToArrayList(originalVocabsJSONArray);
+
+            assignVocab();
+            showVocab();
+            showStreak();
+            showHighScore();
+
+
+            showSolutionButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    cheatButtonWasPushed = true;
+                    try {
+                        if(Variables.settingsJSONObject.getBoolean("cheatMode"))
+                            vocabInputEditText.setText(currentSolution);
+                        else
+                            Toast.makeText(getBaseContext(), R.string.cheatmode_is_off, Toast.LENGTH_LONG).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            deleteVocabButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    originalVocabsJSONArray.remove(currentRandom);
+                    vocabsArray = JSONArrayToArrayList(originalVocabsJSONArray);
+                    Toast.makeText(getBaseContext(), currentQuestion + " - " + currentSolution, Toast.LENGTH_LONG).show();
+                    updateVocJSONFile(vocabsObject);
+                    assignVocab();
+                    showVocab();
+                }
+            });
+
+            returnToMain.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try {
+                        vocabsObject.put("vocabs", originalVocabsJSONArray);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    updateVocJSONFile(vocabsObject);
+                    startActivity(new Intent(getBaseContext(), HomeActivity.class));
+                }
+            });
+
+            applyButton.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    try{
+                        if (Variables.settingsJSONObject.getBoolean("capitalization")) {
+                            if (vocabInputEditText.getText().toString().equals(currentSolution)) {
+                                guessedRight(v);
+                            } else {
+                                guessedWrong(v);
+                            }
+
+                        } else if (!Variables.settingsJSONObject.getBoolean("capitalization")) {
+                            if (vocabInputEditText.getText().toString().toLowerCase(Locale.ROOT).equals(currentSolution.toLowerCase(Locale.ROOT))) {
+                                guessedRight(v);
+                            } else {
+                                guessedWrong(v);
+                            }
+                        }
+                    }catch(JSONException e){
+                        e.printStackTrace();
+                    }
+                    vocabInputEditText.setText("");
+                    cheatButtonWasPushed = false;
+                }
+            });
+        }catch(JSONException e){
             e.printStackTrace();
         }
-        vocabsArray = JSONArrayToArrayList(originalVocabsJSONArray);
-
-        assignVocab();
-        showVocab();
-        showScore();
-
-        showSolutionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cheatButtonWasPushed = true;
-                try {
-                    if(Variables.settingsJSONObject.getBoolean("cheatMode"))
-                        vocabInputEditText.setText(currentSolution);
-                    else
-                        Toast.makeText(getBaseContext(), R.string.cheatmode_is_off, Toast.LENGTH_LONG).show();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        deleteVocabButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                originalVocabsJSONArray.remove(currentRandom);
-                vocabsArray = JSONArrayToArrayList(originalVocabsJSONArray);
-                Toast.makeText(getBaseContext(), currentQuestion + " - " + currentSolution, Toast.LENGTH_LONG).show();
-                updateVocJSONFile(vocabsObject);
-                assignVocab();
-                showVocab();
-            }
-        });
-
-        returnToMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    vocabsObject.put("vocabs", originalVocabsJSONArray);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                updateVocJSONFile(vocabsObject);
-                startActivity(new Intent(getBaseContext(), HomeActivity.class));
-            }
-        });
-
-        applyButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                try{
-                    if (Variables.settingsJSONObject.getBoolean("capitalization")) {
-                        if (vocabInputEditText.getText().toString().equals(currentSolution)) {
-                            guessedRight(v);
-                        } else {
-                            guessedWrong(v);
-                        }
-
-                    } else if (!Variables.settingsJSONObject.getBoolean("capitalization")) {
-                        if (vocabInputEditText.getText().toString().toLowerCase(Locale.ROOT).equals(currentSolution.toLowerCase(Locale.ROOT))) {
-                            guessedRight(v);
-                        } else {
-                            guessedWrong(v);
-                        }
-                    }
-                }catch(JSONException e){
-                    e.printStackTrace();
-                }
-                vocabInputEditText.setText("");
-                cheatButtonWasPushed = false;
-            }
-        });
 
     }
 
@@ -155,20 +162,34 @@ public class AskVocabWriteActivity extends AppCompatActivity {
                 Variables.statisticsJSONObject.getJSONObject("writemode").put("numRight", currentNumRight + 1);
                 Variables.statisticsJSONObject.getJSONObject("writemode").put("numTotal", currentNumTotal + 1);
                 updateStatJSONFile(Variables.statisticsJSONObject);
-            }else{
+            } else {
                 Toast.makeText(getBaseContext(), R.string.vocab_cheatmode_not_count_stats, Toast.LENGTH_SHORT).show();
             }
+            currentScore++;
+            if (currentScore > Variables.currentVocabSet.getStreak()) {
+                Variables.currentVocabSet.setStreak(currentScore);
+                Variables.vocabsetJSONObject.getJSONArray("streak").put(Variables.currentVocabSetIndex, currentScore);
+                updateSetJSONFile(Variables.vocabsetJSONObject);
+            }
+            showHighScore();
+            showStreak();
+            vocabsArray.get(currentRandom).setNumGuessedRight(vocabsArray.get(currentRandom).getNumGuessedRight() + 1);
+            originalVocabsJSONArray = ArrayListToJSONArray(vocabsArray);
+            updateVocJSONFile(vocabsObject);
+            assignVocab();
+            showVocab();
+            vocabInputEditText.getBackground().mutate().setColorFilter((getResources().getColor(android.R.color.holo_green_light)), PorterDuff.Mode.SRC_ATOP);
         }catch(JSONException e){
             e.printStackTrace();
         }
-        currentScore++;
-        showScore();
-        vocabsArray.get(currentRandom).setNumGuessedRight(vocabsArray.get(currentRandom).getNumGuessedRight() + 1);
-        originalVocabsJSONArray = ArrayListToJSONArray(vocabsArray);
-        updateVocJSONFile(vocabsObject);
-        assignVocab();
-        showVocab();
-        vocabInputEditText.getBackground().mutate().setColorFilter((getResources().getColor(android.R.color.holo_green_light)), PorterDuff.Mode.SRC_ATOP);
+    }
+
+    private void changeButtonBgGreen(TextView highScoreView) {
+        highScoreView.getBackground().mutate().setColorFilter((getResources().getColor(android.R.color.holo_green_light)), PorterDuff.Mode.SRC_ATOP);
+    }
+
+    private void showHighScore() throws JSONException{
+        highScoreView.setText(getResources().getString(R.string.high_score) + Variables.vocabsetJSONObject.getJSONArray("streak").getInt(Variables.currentVocabSetIndex));
     }
 
     private void guessedWrong(View v){
@@ -190,7 +211,7 @@ public class AskVocabWriteActivity extends AppCompatActivity {
         }
 
         currentScore = 0;
-        showScore();
+        showStreak();
         vocabsArray.get(currentRandom).setNumGuessedWrong(vocabsArray.get(currentRandom).getNumGuessedWrong() + 1);
         originalVocabsJSONArray = ArrayListToJSONArray(vocabsArray);
         updateVocJSONFile(vocabsObject);
@@ -251,6 +272,27 @@ public class AskVocabWriteActivity extends AppCompatActivity {
 
         try{
             fos = openFileOutput(Variables.STATISTICS_FILE_NAME, MODE_PRIVATE);
+            fos.write(jsonString.getBytes());
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }finally {
+            if(fos != null){
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private void updateSetJSONFile(JSONObject j){
+        String jsonString = j.toString();
+        FileOutputStream fos = null;
+
+        try{
+            fos = openFileOutput(Variables.VOCAB_SET_FILE_NAME, MODE_PRIVATE);
             fos.write(jsonString.getBytes());
 
         }catch(IOException e){
@@ -353,7 +395,7 @@ public class AskVocabWriteActivity extends AppCompatActivity {
         }
     }
 
-    private void showScore(){
+    private void showStreak(){
         currentVocabScoreView.setText(getResources().getString(R.string.score) + " " +currentScore);
     }
 }

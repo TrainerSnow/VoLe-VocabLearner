@@ -87,10 +87,12 @@ public class HomeActivity extends VoLeBaseActivity {
         vocabSetsView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Variables.currentVocabSetIndex = position;
                 try{
 
                     Variables.currentVocabulary = vocabSetsArray.get(position).getVocabFileName();
                     Variables.currentVocabSetName = vocabSetsArray.get(position).getTitle();
+                    Variables.currentVocabSet = vocabSetsArray.get(position);
                     vocabFile = setUpFile(Variables.currentVocabulary);
                     vocabObject = loadJSONFile(vocabFile, Variables.VOCAB_FILE_PRESET);
                     vocabArray = vocabObject.getJSONArray("vocabs");
@@ -138,6 +140,7 @@ public class HomeActivity extends VoLeBaseActivity {
             Variables.vocabSetTitles.remove(remove);
             Variables.vocabSetDescriptions.remove(remove);
             Variables.vocabSetVocabularyPath.remove(remove);
+            Variables.vocabSetStreak.remove(remove);
     }
 
     private void onSettingsButton(int position){

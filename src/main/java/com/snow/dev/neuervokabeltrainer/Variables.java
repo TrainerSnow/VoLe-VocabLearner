@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import java.io.File;
 
 public class Variables {
+    public static VocabSet currentVocabSet;
     public static JSONObject vocabsJSONObject;
     public static JSONObject settingsJSONObject;
     public static JSONObject vocabsetJSONObject;
@@ -16,6 +17,7 @@ public class Variables {
     public static JSONArray vocabSetDescriptions;
     public static JSONArray vocabSetVocabularyPath;
     public static JSONArray vocabSetStreak;
+    public static int currentVocabSetIndex;
     public static File settingsExternalFile;
     public static File vocabsExternalFile;
     public static File vocabsetsExternalFile;

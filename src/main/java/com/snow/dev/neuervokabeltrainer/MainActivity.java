@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
             Variables.vocabSetTitles = Variables.vocabsetJSONObject.getJSONArray("title");
             Variables.vocabSetDescriptions = Variables.vocabsetJSONObject.getJSONArray("description");
             Variables.vocabSetVocabularyPath = Variables.vocabsetJSONObject.getJSONArray("vocabulary");
-            Log.d(TAG, Variables.vocabsetJSONObject.toString());
             Variables.vocabSetStreak = Variables.vocabsetJSONObject.getJSONArray("streak");
         } catch (JSONException e) {
             e.printStackTrace();

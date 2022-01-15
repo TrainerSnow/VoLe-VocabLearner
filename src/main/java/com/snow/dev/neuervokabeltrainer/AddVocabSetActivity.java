@@ -91,6 +91,7 @@ public class AddVocabSetActivity extends AppCompatActivity {
         Variables.vocabSetTitles.put(vocabSet.getTitle());
         Variables.vocabSetDescriptions.put(vocabSet.getDescription());
         Variables.vocabSetVocabularyPath.put(vocabSet.getTitle().replaceAll(Variables.FILE_REGEX, "_").toLowerCase(Locale.ROOT));
+        Variables.vocabSetStreak.put(vocabSet.getStreak());
     }
 
     private void updateJSONFile(JSONObject j, String fileName){

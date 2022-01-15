@@ -29,4 +29,5 @@
     <string name="instructions_add_vocab">Klicke dieses Symbol um die aktuelle Vokabel zu der Sammlung zu speichern</string>
     <string name="instructions_stats_vocset">Klicke dieses Symbol um die Statistiken für die aktuelle Sammlung zu sehen</string>
     <string name="voc_set_alr_exists">Dieses Vokabelset existiert bereits. Bitte wähle einen anderen Namen</string>
+    <string name="high_score" translatable="false">"Highscore: "</string>
 </resources>
