@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">VoLe - Vocab Learner</string>
-    <string name="title_activity_ask_vocab_write">AskVocabWriteActivity</string>
     <string name="setname">Sammlungsname</string>
     <string name="setdescription">Sammlungsbeschreibung</string>
     <string name="back">Zurück</string>
@@ -20,7 +18,7 @@
     <string name="delete_set_dialog_message">Willst du das Set Wirklich löschen?</string>
     <string name="yes">Ja</string>
     <string name="no">Nein</string>
-    <string name="score">Highscore:</string>
+    <string name="score">Serie:</string>
     <string name="reset">Zurücksetzen</string>
     <string name="instructions_setting">Klicke auf dieses Symbol um in die Einstellungen zu gelangen</string>
     <string name="instructions_stats">Klicke auf dieses Symbol um deine Statistiken anzusehen</string>

@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         Variables.vocabsetJSONObject = loadJSONFile(Variables.vocabsetsExternalFile, Variables.VOCAB_SET_FILE_PRESET);
         Variables.statisticsJSONObject = loadJSONFile(Variables.statisticsExternalFile, Variables.STATISTICS_FILE_PRESET);
         Variables.vocabsJSONObject = loadJSONFile(Variables.vocabsExternalFile, Variables.VOCAB_FILE_PRESET);
-        Variables.vocabsJSONObject = loadJSONObjectFromPreset(Variables.VOCAB_FILE_PRESET);
+        //Variables.vocabsetJSONObject = loadJSONObjectFromPreset(Variables.VOCAB_SET_FILE_PRESET);
 
 
         updateJSONFile(Variables.settingsJSONObject, Variables.SETTINGS_FILE_NAME);
@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
             Variables.vocabSetTitles = Variables.vocabsetJSONObject.getJSONArray("title");
             Variables.vocabSetDescriptions = Variables.vocabsetJSONObject.getJSONArray("description");
             Variables.vocabSetVocabularyPath = Variables.vocabsetJSONObject.getJSONArray("vocabulary");
+            Log.d(TAG, Variables.vocabsetJSONObject.toString());
+            Variables.vocabSetStreak = Variables.vocabsetJSONObject.getJSONArray("streak");
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -15,6 +15,7 @@ public class Variables {
     public static JSONArray vocabSetTitles;
     public static JSONArray vocabSetDescriptions;
     public static JSONArray vocabSetVocabularyPath;
+    public static JSONArray vocabSetStreak;
     public static File settingsExternalFile;
     public static File vocabsExternalFile;
     public static File vocabsetsExternalFile;
@@ -36,11 +37,14 @@ public class Variables {
             "  \"cheatMode\": false\n" +
             "}";
     public static final String VOCAB_SET_FILE_PRESET = "{\n" +
-            "    \"title\":\n" +
-            "    [\"Beispielvokabeln 1\", \"Beispielvokabeln 2\", \"Beispielvokabeln 2\"],\n" +
-            "    \"description\":\n" +
-            "    [\"Dies ist eine Beispielbeschreibung\", \"Dies ist eine Beispielbeschreibung\", \"Dies ist eine Beispielbeschreibung\"],\n" +
-            "    \"vocabulary\":[\"beispielvokabeln_1\", \"beispielvokabeln_2\", \"beispielvokabeln_3\"]\n" +
+            "    \"title\": \n" +
+            "    [\"Beispielvokabeln 1\", \"Beispielvokabeln 2\", \"Beispielvokabeln 3\"],\n" +
+            "    \"description\": \n" +
+            "    [\"Dies ist eine Beispielbeschreibung 1\", \"Dies ist eine Beispielbeschreibung 2\", \"Dies ist eine Beispielbeschreibung 3\"],\n" +
+            "    \"vocabulary\":\n" +
+            "    [\"beispielvokabeln_1\", \"beispielvokabeln_2\", \"beispielvokabeln_3\"],\n" +
+            "    \"streak\": \n" +
+            "    [0 , 0, 0]     \n" +
             "}";
     public static final String STATISTICS_FILE_PRESET = "{\n" +
             "  \"general\": {\n" +

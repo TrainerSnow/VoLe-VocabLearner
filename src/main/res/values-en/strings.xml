@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">VoLe - Vocab Learner</string>
     <string name="back">Return</string>
     <string name="solution">Solution</string>
     <string name="apply">Enter</string>
@@ -17,7 +16,7 @@
     <string name="delete_set_dialog_message">Do you really want to delete this set?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="score">Highscore:</string>
+    <string name="score">Streak:</string>
     <string name="reset">Reset</string>
     <string name="instructions_setting">Click this symbol to be redirected to the settings menu.</string>
     <string name="instructions_stats">Click this symbol to see your statistics.</string>
@@ -28,6 +27,5 @@
     <string name="instructions_stats_vocset">Click this symbol to see the statistics for the current vocab set</string>
     <string name="setdescription">Set description</string>
     <string name="setname">Set name</string>
-    <string name="title_activity_ask_vocab_write">AskVocabWriteActivity</string>
     <string name="voc_set_alr_exists">This vocab set already exists. Please Choose another name.</string>
 </resources>

@@ -7,18 +7,23 @@ public class VocabSet {
     String[][] vocabPairs;
     String title;
     String description;
-    int size;
     String vocabFileName;
+    int streak;
 
-    public String getVocabFileName() {
-        return vocabFileName;
+    public int getStreak() {
+        return streak;
     }
 
-    public VocabSet(String[][] vocabs, String name, String description) {
+    public VocabSet(String[][] vocabs, String name, String description, int streak) {
         this.vocabPairs = vocabs;
         this.title = name;
         this.description = description;
         this.vocabFileName = getTitle().replaceAll(Variables.FILE_REGEX, "_").toLowerCase(Locale.ROOT);
+        this.streak = streak;
+    }
+
+    public String getVocabFileName() {
+        return vocabFileName;
     }
 
     public String[] getVocab(int i){
@@ -52,13 +57,5 @@ public class VocabSet {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
     }
 }

@@ -69,7 +69,7 @@ public class AddVocabSetActivity extends AppCompatActivity {
                     return;
                 }
                 String[][] fakeArray = new String[0][0];
-                VocabSet vocabSet = new VocabSet(fakeArray, newVocSetTitle, newVocSetDesc);
+                VocabSet vocabSet = new VocabSet(fakeArray, newVocSetTitle, newVocSetDesc, 0);
                 saveVocabSetToJSONObject(vocabSet);
                 updateJSONFile(Variables.vocabsetJSONObject, Variables.VOCAB_SET_FILE_NAME);
                 setUpFile(newVocSetTitle.replaceAll(Variables.FILE_REGEX, "_").toLowerCase(Locale.ROOT)+ ".json");

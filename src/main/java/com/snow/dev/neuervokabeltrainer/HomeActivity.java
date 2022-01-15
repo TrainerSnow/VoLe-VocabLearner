@@ -30,6 +30,7 @@ public class HomeActivity extends VoLeBaseActivity {
     private JSONObject vocabObject;
     private JSONArray vocabArray;
     private File vocabFile;
+    private static final String TAG = "HomeActivity";
 
     @Override
     public void onPause(){
@@ -55,7 +56,8 @@ public class HomeActivity extends VoLeBaseActivity {
 
         try {
             for (int i = 0; i < Variables.vocabSetTitles.length(); i++) {
-                vocabSetsArray.add(new VocabSet(Variables.VOCAB_ARRAY_PRESET, Variables.vocabSetTitles.getString(i), Variables.vocabSetDescriptions.getString(i)));
+                Log.d(TAG, "onCreate: " + i);
+                vocabSetsArray.add(new VocabSet(Variables.VOCAB_ARRAY_PRESET, Variables.vocabSetTitles.getString(i), Variables.vocabSetDescriptions.getString(i), Variables.vocabSetStreak.getInt(i)));
             }
         }catch(JSONException e) {
             e.printStackTrace();
