@@ -162,14 +162,14 @@ public class AskVocabWriteActivity extends AppCompatActivity {
                 Variables.statisticsJSONObject.getJSONObject("writemode").put("numRight", currentNumRight + 1);
                 Variables.statisticsJSONObject.getJSONObject("writemode").put("numTotal", currentNumTotal + 1);
                 updateStatJSONFile(Variables.statisticsJSONObject);
+                currentScore++;
+                if (currentScore > Variables.currentVocabSet.getStreak()) {
+                    Variables.currentVocabSet.setStreak(Variables.currentVocabSet.getStreak() + 1);
+                    Variables.vocabsetJSONObject.getJSONArray("streak").put(Variables.currentVocabSetIndex, currentScore);
+                    updateSetJSONFile(Variables.vocabsetJSONObject);
+                }
             } else {
                 Toast.makeText(getBaseContext(), R.string.vocab_cheatmode_not_count_stats, Toast.LENGTH_SHORT).show();
-            }
-            currentScore++;
-            if (currentScore > Variables.currentVocabSet.getStreak()) {
-                Variables.currentVocabSet.setStreak(currentScore);
-                Variables.vocabsetJSONObject.getJSONArray("streak").put(Variables.currentVocabSetIndex, currentScore);
-                updateSetJSONFile(Variables.vocabsetJSONObject);
             }
             showHighScore();
             showStreak();
@@ -182,10 +182,6 @@ public class AskVocabWriteActivity extends AppCompatActivity {
         }catch(JSONException e){
             e.printStackTrace();
         }
-    }
-
-    private void changeButtonBgGreen(TextView highScoreView) {
-        highScoreView.getBackground().mutate().setColorFilter((getResources().getColor(android.R.color.holo_green_light)), PorterDuff.Mode.SRC_ATOP);
     }
 
     private void showHighScore() throws JSONException{
