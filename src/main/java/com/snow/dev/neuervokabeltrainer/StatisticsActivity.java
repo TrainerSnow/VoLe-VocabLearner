@@ -72,21 +72,21 @@ public class StatisticsActivity extends AppCompatActivity {
             generalStats = categoriesObject.getJSONObject("general");
             normalStats = categoriesObject.getJSONObject("normalmode");
             writeStats = categoriesObject.getJSONObject("writemode");
-            numAppOpened = new Statistic("Appöffnungen", generalStats.getInt("numAppOpened"));
-            numHighestHighScore = new Statistic("Höchster Highcore", highestHighScore);
-            numChanged = new Statistic("Durchgänge", normalStats.getInt("numChanged"));
-            numRightWriteMode = new Statistic("Richtige Lösungen", writeStats.getInt("numRight"));
-            numWrongWriteMode = new Statistic("Falsche Lösungen", writeStats.getInt("numWrong"));
-            numTotalWriteMode = new Statistic("Gesamte Lösungen", writeStats.getInt("numTotal"));
+            numAppOpened = new Statistic(getResources().getString(R.string.app_open_number), generalStats.getInt("numAppOpened"));
+            numHighestHighScore = new Statistic(getResources().getString(R.string.highest_highscore), highestHighScore);
+            numChanged = new Statistic(getResources().getString(R.string.iterations), normalStats.getInt("numChanged"));
+            numRightWriteMode = new Statistic(getResources().getString(R.string.right_solutions), writeStats.getInt("numRight"));
+            numWrongWriteMode = new Statistic(getResources().getString(R.string.wrong_solutions), writeStats.getInt("numWrong"));
+            numTotalWriteMode = new Statistic(getResources().getString(R.string.total_solutions), writeStats.getInt("numTotal"));
                 float rateF = (float) writeStats.getInt("numRight") / writeStats.getInt("numTotal");
-                rate = new Statistic("Rate in %", rateF * 100);
+                rate = new Statistic(getResources().getString(R.string.rate_in_percent), rateF * 100);
         }catch(JSONException e) {
             e.printStackTrace();
         }
 
-        StatisticCategory generalCategory = new StatisticCategory("Generalle Statistik", numAppOpened, numHighestHighScore);
-        StatisticCategory normalCategory = new StatisticCategory("Normaler Modus", numChanged);
-        StatisticCategory writeCategory = new StatisticCategory("Schreibmodus", numRightWriteMode, numWrongWriteMode, numTotalWriteMode, rate);
+        StatisticCategory generalCategory = new StatisticCategory(getResources().getString(R.string.general_stats), numAppOpened, numHighestHighScore);
+        StatisticCategory normalCategory = new StatisticCategory(getResources().getString(R.string.normal_mode), numChanged);
+        StatisticCategory writeCategory = new StatisticCategory(getResources().getString(R.string.write_mode), numRightWriteMode, numWrongWriteMode, numTotalWriteMode, rate);
 
         categories.add(generalCategory);
         categories.add(normalCategory);

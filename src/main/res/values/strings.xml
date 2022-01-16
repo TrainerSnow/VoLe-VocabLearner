@@ -30,4 +30,14 @@
     <string name="instructions_stats_vocset">Klicke dieses Symbol um die Statistiken für die aktuelle Sammlung zu sehen</string>
     <string name="voc_set_alr_exists">Dieses Vokabelset existiert bereits. Bitte wähle einen anderen Namen</string>
     <string name="high_score" translatable="false">"Highscore: "</string>
+    <string name="app_open_number">Appöffnungen</string>
+    <string name="highest_highscore">Höchster Highscore</string>
+    <string name="iterations">Durchgänge</string>
+    <string name="right_solutions">Richtige Lösungen</string>
+    <string name="wrong_solutions">Falsche Lösungen</string>
+    <string name="total_solutions">Gesamte Lösungen</string>
+    <string name="rate_in_percent">Rate in %</string>
+    <string name="general_stats">Generelle Statistik</string>
+    <string name="normal_mode">Normaler Modus</string>
+    <string name="write_mode">Schreibmodus</string>
 </resources>

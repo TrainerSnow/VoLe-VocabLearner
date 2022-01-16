@@ -28,4 +28,14 @@
     <string name="setdescription">Set description</string>
     <string name="setname">Set name</string>
     <string name="voc_set_alr_exists">This vocab set already exists. Please Choose another name.</string>
+    <string name="app_open_number">Times app opened</string>
+    <string name="highest_highscore">Highest Highscore</string>
+    <string name="iterations">Iterations</string>
+    <string name="right_solutions">Right solutions</string>
+    <string name="wrong_solutions">Wrong solutions</string>
+    <string name="total_solutions">Total solutions</string>
+    <string name="rate_in_percent">Rate in %</string>
+    <string name="general_stats">General Statistic</string>
+    <string name="normal_mode">Normal Mode</string>
+    <string name="write_mode">Write Mode</string>
 </resources>
