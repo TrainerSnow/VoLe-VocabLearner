@@ -48,6 +48,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setupVariables() {
+        /*
+        Stupid Hack:
+        Manually create Files for default vocab sets
+         */
+        setUpFile("beispielvokabeln_1.json");
+        setUpFile("beispielvokabeln_2.json");
+        setUpFile("beispielvokabeln_3.json");
+
         Variables.settingsExternalFile = setUpFile(Variables.SETTINGS_FILE_NAME);
         Variables.vocabsetsExternalFile = setUpFile(Variables.VOCAB_SET_FILE_NAME);
         Variables.statisticsExternalFile = setUpFile(Variables.STATISTICS_FILE_NAME);
