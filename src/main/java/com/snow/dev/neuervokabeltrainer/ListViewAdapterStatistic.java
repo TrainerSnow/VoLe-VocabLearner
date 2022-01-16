@@ -42,6 +42,8 @@ public class ListViewAdapterStatistic extends ArrayAdapter<Statistic> {
                 statisticsValueView.setText(String.valueOf(statistics.get(position).getValueF()));
                 if(Float.isNaN(statistics.get(position).getValueF()))
                     statisticsValueView.setText(String.valueOf(0));
+            }else if(statistics.get(position).valueIsString){
+                statisticsValueView.setText(statistics.get(position).getValueS());
             }else{
                 statisticsValueView.setText(String.valueOf(statistics.get(position).getValue()));
             }

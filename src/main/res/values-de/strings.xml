@@ -38,4 +38,5 @@
     <string name="general_stats">Generelle Statistik</string>
     <string name="normal_mode">Normaler Modus</string>
     <string name="write_mode">Schreibmodus</string>
+    <string name="best_voc_set">Beste Vokabelsammlung</string>
 </resources>

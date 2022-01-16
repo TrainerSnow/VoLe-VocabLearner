@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 public class StatisticsActivity extends AppCompatActivity {
 
-    private int highestHighScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +41,10 @@ public class StatisticsActivity extends AppCompatActivity {
         Statistic numTotalWriteMode = null;
         Statistic rate = null;
         Statistic numHighestHighScore = null;
+        Statistic bestSet = null;
         Button resetStatsButton = findViewById(R.id.resetStatsButton);
-        highestHighScore = getHighestHightscore();
+        int highestHighScore = getHighestHightscore();
+        String bestVocSetName = getBestVocSetName();
 
         resetStatsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +75,7 @@ public class StatisticsActivity extends AppCompatActivity {
             writeStats = categoriesObject.getJSONObject("writemode");
             numAppOpened = new Statistic(getResources().getString(R.string.app_open_number), generalStats.getInt("numAppOpened"));
             numHighestHighScore = new Statistic(getResources().getString(R.string.highest_highscore), highestHighScore);
+            bestSet = new Statistic(getResources().getString(R.string.best_voc_set), bestVocSetName);
             numChanged = new Statistic(getResources().getString(R.string.iterations), normalStats.getInt("numChanged"));
             numRightWriteMode = new Statistic(getResources().getString(R.string.right_solutions), writeStats.getInt("numRight"));
             numWrongWriteMode = new Statistic(getResources().getString(R.string.wrong_solutions), writeStats.getInt("numWrong"));
@@ -84,7 +86,7 @@ public class StatisticsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        StatisticCategory generalCategory = new StatisticCategory(getResources().getString(R.string.general_stats), numAppOpened, numHighestHighScore);
+        StatisticCategory generalCategory = new StatisticCategory(getResources().getString(R.string.general_stats), numAppOpened, numHighestHighScore, bestSet);
         StatisticCategory normalCategory = new StatisticCategory(getResources().getString(R.string.normal_mode), numChanged);
         StatisticCategory writeCategory = new StatisticCategory(getResources().getString(R.string.write_mode), numRightWriteMode, numWrongWriteMode, numTotalWriteMode, rate);
 
@@ -93,6 +95,28 @@ public class StatisticsActivity extends AppCompatActivity {
         categories.add(writeCategory);
 
         statisticsListView.setAdapter(adapter);
+    }
+
+    private String getBestVocSetName() {
+        try{
+            if(Variables.vocabsetJSONObject.getJSONArray("streak").length() == 0){
+                return "-";
+            }
+            int currentHighestIndex = -1;
+            int recentStreak = -1;
+            int currentStreak;
+            for(int i = 0; i < Variables.vocabsetJSONObject.getJSONArray("streak").length(); i++){
+                currentStreak = Variables.vocabsetJSONObject.getJSONArray("streak").getInt(i);
+                if(currentStreak > recentStreak){
+                    recentStreak = currentStreak;
+                    currentHighestIndex = i;
+                }
+            }
+            return Variables.vocabsetJSONObject.getJSONArray("title").getString(currentHighestIndex);
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
+        return "An Error occured";
     }
 
     private int getHighestHightscore() {
