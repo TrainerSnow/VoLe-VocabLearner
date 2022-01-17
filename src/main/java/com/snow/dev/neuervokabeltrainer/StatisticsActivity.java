@@ -1,5 +1,7 @@
 package com.snow.dev.neuervokabeltrainer;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,8 +26,8 @@ public class StatisticsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
 
-        getSupportActionBar().setTitle("");
-        getSupportActionBar().hide();
+        getSupportActionBar().setTitle(getResources().getString(R.string.statistics));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF")));
 
         ListView statisticsListView = findViewById(R.id.statisticsListView);
         ArrayList<StatisticCategory> categories = new ArrayList<>();

@@ -59,7 +59,7 @@ public class AskVocabWriteActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_ask_vocab_write);
             getSupportActionBar().setTitle(Variables.currentVocabSetName);
-            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#14397d")));
+            getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF")));
 
             vocabShowTextView = findViewById(R.id.vocabShowView);
             vocabInputEditText = findViewById(R.id.vocabInputEditText);

@@ -1,6 +1,8 @@
 package com.snow.dev.neuervokabeltrainer;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -44,8 +46,8 @@ public class OverviewVocabActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vocab_overview);
 
-        getSupportActionBar().setTitle("");
-        getSupportActionBar().hide();
+        getSupportActionBar().setTitle(Variables.currentVocabSetName);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF")));
 
         vocabView  = findViewById(R.id.vocabListView);
         vocabArray = new ArrayList<>();

@@ -27,7 +27,7 @@ public class VocabSetStatisticsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vocab_set_statistics);
 
         getSupportActionBar().setTitle("Statistik für " + Variables.currentVocabSetName);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#14397d")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF")));
 
         ListView vocabSetStatsView = findViewById(R.id.vocabSetStats);
         ArrayList<VocabPair> vocabPairs = new ArrayList<>();

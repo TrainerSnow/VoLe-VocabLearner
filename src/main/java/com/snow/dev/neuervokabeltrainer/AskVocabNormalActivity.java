@@ -58,7 +58,7 @@ public class AskVocabNormalActivity extends AppCompatActivity {
         showNewVocab();
 
         getSupportActionBar().setTitle(Variables.currentVocabSetName);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#14397d")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF")));
 
 
 

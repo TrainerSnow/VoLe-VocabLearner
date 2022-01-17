@@ -1,6 +1,8 @@
 package com.snow.dev.neuervokabeltrainer;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 
@@ -31,6 +33,9 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        getSupportActionBar().setTitle(getResources().getString(R.string.settings));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF")));
+
         activateCapitalizationModeSwitch = findViewById(R.id.activateCapitalizationmodeSwitch);
         activateWriteModeSwitch = findViewById(R.id.activateWriteModeSwitch);
         activateCheatModeSwitch = findViewById(R.id.activateCheatModeSwitch);
@@ -38,8 +43,6 @@ public class SettingsActivity extends AppCompatActivity {
         View applySettingsButton = findViewById(R.id.applySettingsButton);
 
         loadSettings();
-        getSupportActionBar().setTitle("");
-        getSupportActionBar().hide();
 
         applySettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override

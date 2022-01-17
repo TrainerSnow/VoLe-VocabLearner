@@ -1,6 +1,8 @@
 package com.snow.dev.neuervokabeltrainer;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,7 +24,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-public class HomeActivity extends VoLeBaseActivity {
+public class HomeActivity extends AppCompatActivity {
 
     static ListView vocabSetsView;
     public static ArrayList<VocabSet> vocabSetsArray;
@@ -35,7 +37,7 @@ public class HomeActivity extends VoLeBaseActivity {
     @Override
     public void onPause(){
         super.onPause();
-        updateJSONFile(Variables.vocabsetJSONObject, VOCAB_SET_FILE_NAME);
+        updateJSONFile(Variables.vocabsetJSONObject, Variables.VOCAB_SET_FILE_NAME);
     }
 
 
@@ -44,8 +46,8 @@ public class HomeActivity extends VoLeBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        getSupportActionBar().setTitle("");
-        getSupportActionBar().hide();
+        getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF")));
 
         vocabSetsView = findViewById(R.id.vocabSetsView);
         vocabSetsArray = new ArrayList<>();
@@ -148,12 +150,27 @@ public class HomeActivity extends VoLeBaseActivity {
         startActivity(new Intent(getBaseContext(), OverviewVocabActivity.class));
     }
 
-    /*private void updateJSONFile(JSONObject j){
+    private File setUpFile(String fileName) {
+        File f = new File(this.getBaseContext().getFilesDir(), fileName);
+        if(f.exists()) {
+            return f;
+        }
+        else {
+            try{
+                f.createNewFile();
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+        return f;
+    }
+
+    private void updateJSONFile(JSONObject j ,String fileName){
         String jsonString = j.toString();
         FileOutputStream fos = null;
 
         try{
-            fos = openFileOutput(Variables.VOCAB_SET_FILE_NAME, MODE_PRIVATE);
+            fos = openFileOutput(fileName, MODE_PRIVATE);
             fos.write(jsonString.getBytes());
 
         }catch(IOException e){
@@ -167,13 +184,13 @@ public class HomeActivity extends VoLeBaseActivity {
                 }
             }
         }
-    }*/
+    }
 
-    /*public JSONObject loadJSONFile(File file, String jsonPreset) {
+    private JSONObject loadJSONFile(File file, String preset) {
 
         String jsonFileAsString;
         try {
-            InputStream is = new FileInputStream(file);
+            InputStream is = new FileInputStream(file + ".json");
 
             int size = is.available();
 
@@ -188,33 +205,12 @@ public class HomeActivity extends VoLeBaseActivity {
             if(!jsonFileAsString.isEmpty())
                 return new JSONObject(jsonFileAsString);
             else{
-                return new JSONObject("{\n" +
-                        "  \"vocabs\":\n" +
-                        "  [\n" +
-                        "    \n" +
-                        "  ]\n" +
-                        "}");
+                return new JSONObject(preset);
             }
 
         } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
         return null;
-    }*/
-
-
-    /*private File setUpFile(String fileName) {
-        File f = new File(this.getBaseContext().getFilesDir(), fileName + ".json");
-        if(f.exists()) {
-            return f;
-        }
-        else {
-            try{
-                f.createNewFile();
-            }catch(IOException e){
-                e.printStackTrace();
-            }
-        }
-        return f;
-    }*/
+    }
 }

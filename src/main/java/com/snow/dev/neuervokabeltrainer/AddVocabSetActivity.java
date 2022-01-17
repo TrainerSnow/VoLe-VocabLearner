@@ -1,7 +1,9 @@
 package com.snow.dev.neuervokabeltrainer;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,8 +38,8 @@ public class AddVocabSetActivity extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: " + Variables.vocabsetJSONObject.toString());
 
-        getSupportActionBar().setTitle("");
-        getSupportActionBar().hide();
+        getSupportActionBar().setTitle(getResources().getString(R.string.create_new_set));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF")));
 
         EditText titleInput = findViewById(R.id.newVocabSetTitle);
         EditText descriptionInput = findViewById(R.id.newVocabSetDescription);
