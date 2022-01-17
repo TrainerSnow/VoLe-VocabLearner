@@ -47,7 +47,7 @@ public class ListViewAdapterVocabSet extends ArrayAdapter<VocabSet> {
             vocabSetDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   HomeActivity.removeItem(position);
+                   HomeActivity.showCustomDialog(position, vocabSets.get(position).getTitle());
                 }
             });
         }

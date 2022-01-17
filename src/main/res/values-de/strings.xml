@@ -46,4 +46,5 @@
     <string name="create_new_set">Neue Vokabelsammlung erstellen</string>
     <string name="settings">Einstellungen</string>
     <string name="statistics">Statistiken</string>
+    <string name="vocab_set_delete_confirm">Willst du die Vokabelsammlung %s wirklich löschen? Die Daten gehen dabei verloren</string>
 </resources>

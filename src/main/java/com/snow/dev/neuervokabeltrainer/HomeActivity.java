@@ -1,13 +1,17 @@
 package com.snow.dev.neuervokabeltrainer;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +37,7 @@ public class HomeActivity extends AppCompatActivity {
     private JSONArray vocabArray;
     private File vocabFile;
     private static final String TAG = "HomeActivity";
+    private static Context thisClass;
 
     @Override
     public void onPause(){
@@ -48,6 +53,8 @@ public class HomeActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle(getResources().getString(R.string.app_name));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF")));
+
+        thisClass = HomeActivity.this;
 
         vocabSetsView = findViewById(R.id.vocabSetsView);
         vocabSetsArray = new ArrayList<>();
@@ -143,6 +150,36 @@ public class HomeActivity extends AppCompatActivity {
             Variables.vocabSetDescriptions.remove(remove);
             Variables.vocabSetVocabularyPath.remove(remove);
             Variables.vocabSetStreak.remove(remove);
+    }
+
+    protected static void showCustomDialog(int position, String vocSetName) {
+        Dialog setDeleteDialog = new Dialog(thisClass);
+        setDeleteDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setDeleteDialog.setCancelable(false);
+        setDeleteDialog.setContentView(R.layout.dialog_basic);
+
+        View acceptDeleteView = setDeleteDialog.findViewById(R.id.dialog_yes_button);
+        View notAcceptDeleteView = setDeleteDialog.findViewById(R.id.dialog_no_button);
+        TextView text = setDeleteDialog.findViewById(R.id.dialog_text);
+
+        text.setText(String.format(thisClass.getResources().getString(R.string.vocab_set_delete_confirm), vocSetName));
+
+        acceptDeleteView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeItem(position);
+                setDeleteDialog.dismiss();
+            }
+        });
+
+        notAcceptDeleteView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setDeleteDialog.dismiss();
+            }
+        });
+
+        setDeleteDialog.show();
     }
 
     private void onSettingsButton(int position){
