@@ -47,4 +47,6 @@
     <string name="settings">Einstellungen</string>
     <string name="statistics">Statistiken</string>
     <string name="vocab_set_delete_confirm">Willst du die Vokabelsammlung %s wirklich löschen? Die Daten gehen dabei verloren</string>
+    <string name="stats_reset_confirm">Willst du die Statistiken wirklich zurücksetzen? Die Daten gehen dabei verloren</string>
+    <string name="reset_stats_toast">Statistiken zurückgesetzt</string>
 </resources>

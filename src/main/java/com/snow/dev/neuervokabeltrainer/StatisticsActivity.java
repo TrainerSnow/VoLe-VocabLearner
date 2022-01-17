@@ -1,24 +1,32 @@
 package com.snow.dev.neuervokabeltrainer;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class StatisticsActivity extends AppCompatActivity {
+
+    private static ArrayList<StatisticCategory> categories;
+    private static ListView statisticsListView;
+    private static ListViewAdapterStatisticCategory adapter;
+    private static Context thisActivity;
 
 
     @Override
@@ -29,9 +37,10 @@ public class StatisticsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(getResources().getString(R.string.statistics));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF")));
 
-        ListView statisticsListView = findViewById(R.id.statisticsListView);
-        ArrayList<StatisticCategory> categories = new ArrayList<>();
-        ListViewAdapterStatisticCategory adapter = new ListViewAdapterStatisticCategory(getBaseContext(), categories, R.layout.statistics_category_row);
+        statisticsListView = findViewById(R.id.statisticsListView);
+        thisActivity = StatisticsActivity.this;
+        categories = new ArrayList<>();
+        adapter = new ListViewAdapterStatisticCategory(getBaseContext(), categories, R.layout.statistics_category_row);
         JSONObject categoriesObject = Variables.statisticsJSONObject;
         JSONObject generalStats;
         JSONObject normalStats;
@@ -51,23 +60,7 @@ public class StatisticsActivity extends AppCompatActivity {
         resetStatsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                categories.get(0).getStatistics().get(0).setValue(0);
-                categories.get(1).getStatistics().get(0).setValue(0);
-                categories.get(2).getStatistics().get(0).setValue(0);
-                categories.get(2).getStatistics().get(1).setValue(0);
-                categories.get(2).getStatistics().get(2).setValue(0);
-
-                try{
-                    Variables.statisticsJSONObject.getJSONObject("general").put("numAppOpened", 0);
-                    Variables.statisticsJSONObject.getJSONObject("normalmode").put("numChanged", 0);
-                    Variables.statisticsJSONObject.getJSONObject("writemode").put("numRight", 0);
-                    Variables.statisticsJSONObject.getJSONObject("writemode").put("numWrong", 0);
-                    Variables.statisticsJSONObject.getJSONObject("writemode").put("numTotal", 0);
-                }catch(JSONException e){
-                    e.printStackTrace();
-                }
-                updateStatJSONFile(Variables.statisticsJSONObject);
-                statisticsListView.setAdapter(adapter);
+                askForResetConfirm(App.getContext().getResources().getString(R.string.stats_reset_confirm));
             }
         });
 
@@ -123,7 +116,7 @@ public class StatisticsActivity extends AppCompatActivity {
 
     private int getHighestHightscore() {
         try{
-            int ret = -1;
+            int ret = 0;
             int currentStreak;
             for (int i = 0; i < Variables.vocabsetJSONObject.getJSONArray("streak").length(); i++){
                 currentStreak = Variables.vocabsetJSONObject.getJSONArray("streak").getInt(i);
@@ -134,15 +127,15 @@ public class StatisticsActivity extends AppCompatActivity {
         }catch(JSONException e){
             e.printStackTrace();
         }
-        return -1;
+        return 0;
     }
 
-    private void updateStatJSONFile(JSONObject j){
+    private static void updateStatJSONFile(JSONObject j){
         String jsonString = j.toString();
         FileOutputStream fos = null;
 
         try{
-            fos = openFileOutput(Variables.STATISTICS_FILE_NAME, MODE_PRIVATE);
+            fos = App.getContext().openFileOutput(Variables.STATISTICS_FILE_NAME, MODE_PRIVATE);
             fos.write(jsonString.getBytes());
 
         }catch(IOException e){
@@ -156,5 +149,56 @@ public class StatisticsActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    protected static void askForResetConfirm(String content) {
+        Dialog setDeleteDialog = new Dialog(thisActivity);
+        setDeleteDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setDeleteDialog.setCancelable(false);
+        setDeleteDialog.setContentView(R.layout.dialog_basic);
+
+        View acceptDeleteView = setDeleteDialog.findViewById(R.id.dialog_yes_button);
+        View notAcceptDeleteView = setDeleteDialog.findViewById(R.id.dialog_no_button);
+        TextView text = setDeleteDialog.findViewById(R.id.dialog_text);
+
+        text.setText(content);
+
+        acceptDeleteView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetStats();
+                setDeleteDialog.dismiss();
+            }
+        });
+
+        notAcceptDeleteView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setDeleteDialog.dismiss();
+            }
+        });
+
+        setDeleteDialog.show();
+    }
+
+    private static void resetStats(){
+        categories.get(0).getStatistics().get(0).setValue(0);
+        categories.get(1).getStatistics().get(0).setValue(0);
+        categories.get(2).getStatistics().get(0).setValue(0);
+        categories.get(2).getStatistics().get(1).setValue(0);
+        categories.get(2).getStatistics().get(2).setValue(0);
+
+        try{
+            Variables.statisticsJSONObject.getJSONObject("general").put("numAppOpened", 0);
+            Variables.statisticsJSONObject.getJSONObject("normalmode").put("numChanged", 0);
+            Variables.statisticsJSONObject.getJSONObject("writemode").put("numRight", 0);
+            Variables.statisticsJSONObject.getJSONObject("writemode").put("numWrong", 0);
+            Variables.statisticsJSONObject.getJSONObject("writemode").put("numTotal", 0);
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
+        updateStatJSONFile(Variables.statisticsJSONObject);
+        statisticsListView.setAdapter(adapter);
+        Toast.makeText(App.getContext(), App.getContext().getResources().getString(R.string.reset_stats_toast), Toast.LENGTH_SHORT).show();
     }
 }

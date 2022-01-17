@@ -47,4 +47,6 @@
     <string name="settings">Settings</string>
     <string name="statistics">Statistics</string>
     <string name="vocab_set_delete_confirm">Do you really want to delete the vocabset %s? The Datat will be lost.</string>
+    <string name="stats_reset_confirm">Do you really want to reset your statistics? Your data will be lost</string>
+    <string name="reset_stats_toast">Reset Stats</string>
 </resources>
