@@ -18,7 +18,7 @@ public class SettingsActivity extends AppCompatActivity {
     private SwitchCompat activateCapitalizationModeSwitch;
     private SwitchCompat activateWriteModeSwitch;
     private SwitchCompat activateCheatModeSwitch;
-
+    private View startInstructionsSettingButton;
 
     @Override
     public void onPause(){
@@ -34,6 +34,7 @@ public class SettingsActivity extends AppCompatActivity {
         activateCapitalizationModeSwitch = findViewById(R.id.activateCapitalizationmodeSwitch);
         activateWriteModeSwitch = findViewById(R.id.activateWriteModeSwitch);
         activateCheatModeSwitch = findViewById(R.id.activateCheatModeSwitch);
+        startInstructionsSettingButton = findViewById(R.id.startInstructionsSettingsButton);
         View applySettingsButton = findViewById(R.id.applySettingsButton);
 
         loadSettings();
@@ -45,6 +46,13 @@ public class SettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 saveSettings();
                 startActivity(new Intent(getBaseContext(), HomeActivity.class));
+            }
+        });
+
+        startInstructionsSettingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), InstructionsSettingsActivity.class));
             }
         });
     }

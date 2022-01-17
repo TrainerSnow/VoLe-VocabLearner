@@ -39,4 +39,7 @@
     <string name="normal_mode">Normal Mode</string>
     <string name="write_mode">Write Mode</string>
     <string name="best_voc_set">Best Vocab Set</string>
+    <string name="instructions_capitalization">This Setting defines, if capitalization is ignored or not, when using the write mode</string>
+    <string name="instructions_cheatmode">This Setting defines, if the cheatbutton can be used to show the current solution, or not</string>
+    <string name="instructions_writemode">This Setting defines, if write mode is going to be used</string>
 </resources>

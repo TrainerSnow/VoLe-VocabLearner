@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NeuerVokabeltrainer">
         <activity
+            android:name=".InstructionsSettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".InstructionsVocabSetOverview"
             android:exported="false" />
         <activity
@@ -45,6 +48,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

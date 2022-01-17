@@ -13,14 +13,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/newVocabSetTitle"
         android:hint="@string/setname"
-        android:textColor="@color/light_blue"/>
+        android:textColor="@color/light_blue"
+        android:textColorHint="@color/light_blue"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/newVocabSetDescription"
         android:hint="@string/setdescription"
-        android:textColor="@color/light_blue"/>
+        android:textColor="@color/light_blue"
+        android:textColorHint="@color/light_blue"/>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -39,4 +39,7 @@
     <string name="normal_mode">Normaler Modus</string>
     <string name="write_mode">Schreibmodus</string>
     <string name="best_voc_set">Beste Vokabelsammlung</string>
+    <string name="instructions_capitalization">Diese Einstellung definiert, ob bei dem Abfragen von Vokabeln im Schreibmodus Groß- und Kleinschreibung beachtet werden soll.</string>
+    <string name="instructions_writemode">Diese Einstellung definiert, ob der Schreibmodus ein, oder ausgeschaltet ist</string>
+    <string name="instructions_cheatmode">Diese Einstellung definiert, ob der Cheatknopf betätigt werden kann, oder nicht</string>
 </resources>
