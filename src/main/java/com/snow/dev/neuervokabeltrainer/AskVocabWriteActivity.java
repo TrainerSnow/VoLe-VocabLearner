@@ -23,6 +23,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -98,12 +99,21 @@ public class AskVocabWriteActivity extends AppCompatActivity {
             deleteVocabButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    originalVocabsJSONArray.remove(currentRandom);
-                    vocabsArray = JSONArrayToArrayList(originalVocabsJSONArray);
-                    Toast.makeText(getBaseContext(), currentQuestion + " - " + currentSolution, Toast.LENGTH_LONG).show();
-                    updateVocJSONFile(vocabsObject);
-                    assignVocab();
-                    showVocab();
+
+                    if(vocabsArray.size() != 1){
+                        originalVocabsJSONArray.remove(currentRandom);
+                        vocabsArray = JSONArrayToArrayList(originalVocabsJSONArray);
+                        Toast.makeText(App.getContext(), String.format(getResources().getString(R.string.deleted), currentQuestion, currentSolution), Toast.LENGTH_LONG).show();
+                        updateVocJSONFile(vocabsObject);
+                        assignVocab();
+                        showVocab();
+                    }else {
+                        originalVocabsJSONArray.remove(currentRandom);
+                        vocabsArray = JSONArrayToArrayList(originalVocabsJSONArray);
+                        Toast.makeText(App.getContext(), String.format(getResources().getString(R.string.deleted), currentQuestion, currentSolution), Toast.LENGTH_LONG).show();
+                        updateVocJSONFile(vocabsObject);
+                        startActivity(new Intent(getBaseContext(), HomeActivity.class));
+                    }
                 }
             });
 

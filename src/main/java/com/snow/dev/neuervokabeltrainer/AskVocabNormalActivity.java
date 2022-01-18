@@ -82,14 +82,25 @@ public class AskVocabNormalActivity extends AppCompatActivity {
         deleteVocabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try{
-                    Toast.makeText(getBaseContext(), currentJSONArray.get(0) + " - " + currentJSONArray.get(1), Toast.LENGTH_SHORT).show();
-                }catch(JSONException e){
-                    e.printStackTrace();
+                if(vocabsArray.length() != 1){
+                    try {
+                        Toast.makeText(getBaseContext(), String.format(getResources().getString(R.string.deleted) ,currentJSONArray.get(0), currentJSONArray.get(1)), Toast.LENGTH_SHORT).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    vocabsArray.remove(currentRandom);
+                    updateVocJSONFile(vocabsObject);
+                    showNewVocab();
+                }else{
+                    try {
+                        Toast.makeText(getBaseContext(), String.format(getResources().getString(R.string.deleted) ,currentJSONArray.get(0), currentJSONArray.get(1)), Toast.LENGTH_SHORT).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    vocabsArray.remove(currentRandom);
+                    updateVocJSONFile(vocabsObject);
+                    startActivity(new Intent(getBaseContext(), HomeActivity.class));
                 }
-                vocabsArray.remove(currentRandom);
-                updateVocJSONFile(vocabsObject);
-                showNewVocab();
             }
         });
 
