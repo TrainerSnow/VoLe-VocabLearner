@@ -50,6 +50,11 @@ public class AskVocabWriteActivity extends AppCompatActivity {
         super.onPause();
         updateStatJSONFile(Variables.statisticsJSONObject);
         updateVocJSONFile(vocabsObject);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
         finish();
     }
 
