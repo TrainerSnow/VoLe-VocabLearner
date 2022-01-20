@@ -53,6 +53,12 @@ public class AskVocabWriteActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public void finish(){
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +133,7 @@ public class AskVocabWriteActivity extends AppCompatActivity {
                     }
                     updateVocJSONFile(vocabsObject);
                     startActivity(new Intent(getBaseContext(), HomeActivity.class));
+                    finish();
                 }
             });
 

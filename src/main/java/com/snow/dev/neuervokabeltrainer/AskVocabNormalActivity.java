@@ -40,6 +40,12 @@ public class AskVocabNormalActivity extends AppCompatActivity {
     }
 
     @Override
+    public void finish(){
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ask_vocab_normal);
@@ -110,6 +116,7 @@ public class AskVocabNormalActivity extends AppCompatActivity {
             public void onClick(View v) {
                 updateVocJSONFile(vocabsObject);
                 startActivity(new Intent(getBaseContext(), HomeActivity.class));
+                finish();
             }
         });
     }

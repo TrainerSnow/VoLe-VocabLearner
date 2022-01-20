@@ -89,7 +89,7 @@ public class HomeActivity extends AppCompatActivity {
                 Variables.currentVocabulary = vocabSetsArray.get(position).getVocabFileName();
                 Variables.currentVocabSetName = vocabSetsArray.get(position).getTitle();
                 onSettingsButton(position);
-                return false;
+                return true;
             }
         });
 
@@ -98,7 +98,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Variables.currentVocabSetIndex = position;
                 try{
-
                     Variables.currentVocabulary = vocabSetsArray.get(position).getVocabFileName();
                     Variables.currentVocabSetName = vocabSetsArray.get(position).getTitle();
                     Variables.currentVocabSet = vocabSetsArray.get(position);
@@ -110,10 +109,14 @@ public class HomeActivity extends AppCompatActivity {
                         Toast.makeText(getBaseContext(), R.string.no_vocabs_in_set, Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    if (Variables.settingsJSONObject.getBoolean("writeMode"))
+                    if (Variables.settingsJSONObject.getBoolean("writeMode")) {
                         startActivity(new Intent(getBaseContext(), AskVocabWriteActivity.class));
-                    else
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    }
+                    else {
                         startActivity(new Intent(getBaseContext(), AskVocabNormalActivity.class));
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    }
                 }catch(JSONException e){
                     e.printStackTrace();
                 }
