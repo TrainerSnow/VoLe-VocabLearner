@@ -170,6 +170,7 @@ public class HomeActivity extends AppCompatActivity {
         acceptDeleteView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                deleteVocSetFile(position);
                 removeItem(position);
                 setDeleteDialog.dismiss();
             }
@@ -183,6 +184,11 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         setDeleteDialog.show();
+    }
+
+    private static void deleteVocSetFile(int position) {
+        File deleteFile = new File(vocabSetsArray.get(position).getVocabFileName());
+        deleteFile.delete();
     }
 
     private void onSettingsButton(int position){
