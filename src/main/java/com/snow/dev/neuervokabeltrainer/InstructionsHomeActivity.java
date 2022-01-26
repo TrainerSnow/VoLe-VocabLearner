@@ -1,6 +1,7 @@
 package com.snow.dev.neuervokabeltrainer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,7 +17,7 @@ public class InstructionsHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_instructions_home);
 
         getSupportActionBar().setTitle(getResources().getString(R.string.help));
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ResourcesCompat.getColor(getResources(), R.color.colorOnSecondary, null)));
 
         findViewById(R.id.startSettingsButton2).setOnClickListener(new View.OnClickListener() {
             @Override

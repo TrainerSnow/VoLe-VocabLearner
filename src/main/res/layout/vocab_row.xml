@@ -6,7 +6,8 @@
     android:padding="8dp"
     android:gravity="start"
     android:layout_marginBottom="10dp"
-    android:layout_marginTop="10dp">
+    android:layout_marginTop="10dp"
+    android:background="@color/background">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -30,7 +31,8 @@
             android:textSize="15sp"
             android:textAlignment="center"
             android:layout_gravity="center"
-            android:id="@+id/vocabName" />
+            android:id="@+id/vocabName"
+            android:textColor="@color/colorOnSecondary"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -39,7 +41,8 @@
             android:textSize="15sp"
             android:textAlignment="center"
             android:layout_gravity="center"
-            android:id="@+id/vocabValue"/>
+            android:id="@+id/vocabValue"
+            android:textColor="@color/colorOnSecondary"/>
 
         <ImageView
             android:layout_width="wrap_content"

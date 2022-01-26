@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="blue_button">
-        <item name="android:textColor">@color/colorAccent</item>
-        <item name="android:backgroundTint">#14397d</item>
+    <style name="basic_button">
+        <item name="android:textColor">#D7EAF3</item>
+        <item name="android:backgroundTint">@color/colorOnPrimary</item>
         <item name="android:padding">10dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>

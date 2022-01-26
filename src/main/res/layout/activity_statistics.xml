@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".StatisticsActivity"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:background="@color/background">
 
     <ListView
         android:layout_width="match_parent"
@@ -15,7 +16,7 @@
         android:dividerHeight="0dp"/>
 
     <Button
-        style="@style/blue_button"
+        style="@style/basic_button"
         android:layout_marginTop="20dp"
         android:text="@string/reset"
         android:id="@+id/resetStatsButton"/>

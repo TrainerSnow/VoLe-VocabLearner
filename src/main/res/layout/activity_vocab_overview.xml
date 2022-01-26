@@ -4,14 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OverviewVocabActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="10dp"
-        android:background="@color/colorAccent">
+        android:background="@color/background">
 
         <EditText
             android:layout_width="match_parent"
@@ -20,7 +21,8 @@
             android:layout_marginEnd="5dp"
             android:id="@+id/newVocabInputName"
             android:hint="@string/vocabname"
-            android:textColor="@color/colorOnSecondary"/>
+            android:textColor="@color/colorOnSecondary"
+            android:textColorHint="@color/colorAccent"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -29,7 +31,8 @@
             android:layout_marginEnd="5dp"
             android:id="@+id/newVocabInputValue"
             android:hint="@string/vocabvalue"
-            android:textColor="@color/colorOnSecondary"/>
+            android:textColor="@color/colorOnSecondary"
+            android:textColorHint="@color/colorAccent"/>
 
         <LinearLayout
             android:layout_width="match_parent"

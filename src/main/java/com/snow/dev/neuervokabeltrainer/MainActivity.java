@@ -1,6 +1,7 @@
 package com.snow.dev.neuervokabeltrainer;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -24,8 +25,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.loading_screen);
         super.onCreate(savedInstanceState);
+
+        if(nightModeEnabled()){
+            setContentView(R.layout.loading_screen_dark);
+        }else{
+            setContentView(R.layout.loading_screen);
+        }
+
+
         getSupportActionBar().setTitle("");
         getSupportActionBar().hide();
         setupVariables();
@@ -168,5 +176,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         finish();
+    }
+
+    private boolean nightModeEnabled(){
+        int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                return true;
+
+            case Configuration.UI_MODE_NIGHT_NO:
+                return false;
+
+            default:
+                return false;
+        }
     }
 }

@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="@color/background">
 
     <LinearLayout
         android:layout_height="wrap_content"
@@ -17,7 +18,7 @@
             android:layout_height="wrap_content"
             android:text="@string/setting_capitalization"
             android:layout_weight="1"
-            android:textColor="@color/colorOnPrimary"
+            android:textColor="@color/colorOnSecondary"
             android:textSize="16sp"/>
 
         <androidx.appcompat.widget.SwitchCompat
@@ -40,7 +41,7 @@
             android:layout_height="wrap_content"
             android:text="@string/setting_writemode"
             android:layout_weight="1"
-            android:textColor="@color/colorOnPrimary"
+            android:textColor="@color/colorOnSecondary"
             android:textSize="16sp"/>
 
         <androidx.appcompat.widget.SwitchCompat
@@ -61,7 +62,7 @@
             android:layout_height="wrap_content"
             android:text="@string/setting_cheatmode"
             android:layout_weight="1"
-            android:textColor="@color/colorOnPrimary"
+            android:textColor="@color/colorOnSecondary"
             android:layout_marginBottom="10dp"
             android:textSize="16sp"/>
 
@@ -86,7 +87,7 @@
             android:layout_gravity="start">
 
             <Button
-                style="@style/blue_button"
+                style="@style/basic_button"
                 android:id="@+id/applySettingsButton"
                 android:text="@string/save"/>
 

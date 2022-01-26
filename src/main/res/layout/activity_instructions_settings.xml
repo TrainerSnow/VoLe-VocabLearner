@@ -6,7 +6,8 @@
     tools:context=".InstructionsSettingsActivity"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="40dp">
+    android:padding="40dp"
+    android:background="@color/background">
 
     <TextView
         android:layout_width="match_parent"

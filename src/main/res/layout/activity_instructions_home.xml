@@ -6,7 +6,8 @@
     tools:context=".InstructionsHomeActivity"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="40dp">
+    android:padding="40dp"
+    android:background="@color/background">
 
     <ImageView
         android:layout_width="wrap_content"

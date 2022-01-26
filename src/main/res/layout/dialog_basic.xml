@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/background">
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/yes"
-            style="@style/blue_button"
+            style="@style/basic_button"
             android:layout_weight="1"
             android:textAlignment="center"
             android:textColor="@color/colorAccent"
@@ -32,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/no"
-            style="@style/blue_button"
+            style="@style/basic_button"
             android:layout_weight="1"
             android:textAlignment="center"
             android:textColor="@color/colorAccent"

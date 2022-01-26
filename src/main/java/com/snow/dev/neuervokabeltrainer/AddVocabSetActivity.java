@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,7 +40,7 @@ public class AddVocabSetActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: " + Variables.vocabsetJSONObject.toString());
 
         getSupportActionBar().setTitle(getResources().getString(R.string.create_new_set));
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ResourcesCompat.getColor(getResources(), R.color.colorOnSecondary, null)));
 
         EditText titleInput = findViewById(R.id.newVocabSetTitle);
         EditText descriptionInput = findViewById(R.id.newVocabSetDescription);

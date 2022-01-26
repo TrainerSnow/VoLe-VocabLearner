@@ -6,7 +6,8 @@
     tools:context=".AddVocabSetActivity"
     android:orientation="vertical"
     android:gravity="top"
-    android:padding="40dp">
+    android:padding="40dp"
+    android:background="@color/background">
 
     <EditText
         android:layout_width="match_parent"
@@ -21,7 +22,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/newVocabSetDescription"
         android:hint="@string/setdescription"
-        android:textColor=""
+        android:textColor="@color/colorOnSecondary"
         android:textColorHint="@color/colorOnSecondary"/>
 
     <LinearLayout

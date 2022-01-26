@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".VocabSetStatisticsActivity"
     android:orientation="vertical"
-    android:layout_gravity="top">
+    android:layout_gravity="top"
+    android:background="@color/background">
 
     <ListView
         android:layout_width="match_parent"

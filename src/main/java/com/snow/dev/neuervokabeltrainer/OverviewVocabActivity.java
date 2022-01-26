@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,7 +48,7 @@ public class OverviewVocabActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vocab_overview);
 
         getSupportActionBar().setTitle(Variables.currentVocabSetName);
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ResourcesCompat.getColor(getResources(), R.color.colorOnSecondary, null)));
 
         vocabView  = findViewById(R.id.vocabListView);
         vocabArray = new ArrayList<>();

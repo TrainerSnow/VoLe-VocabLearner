@@ -5,10 +5,6 @@
 
     <corners android:radius="15dp"/>
 
-    <gradient
-        android:startColor="#153e85"
-        android:endColor="@color/colorOnPrimary" />
-
     <size   android:height="50dp"
             android:width="50dp"/>
 
