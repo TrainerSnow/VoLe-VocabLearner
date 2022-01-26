@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/setting_capitalization"
         android:textAlignment="center"
-        android:textColor="@color/dark_blue"
+        android:textColor="@color/colorOnPrimary"
         android:textSize="15sp"
         android:layout_marginBottom="10dp"/>
 
@@ -23,7 +23,7 @@
         android:textAlignment="center"
         android:text="@string/instructions_capitalization"
         android:layout_marginBottom="20dp"
-        android:textColor="@color/light_blue"/>
+        android:textColor="@color/colorOnSecondary"/>
 
 
     <TextView
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:text="@string/setting_cheatmode"
         android:textAlignment="center"
-        android:textColor="@color/dark_blue"
+        android:textColor="@color/colorOnPrimary"
         android:textSize="15sp"
         android:layout_marginBottom="10dp"/>
 
@@ -41,7 +41,7 @@
         android:textAlignment="center"
         android:text="@string/instructions_cheatmode"
         android:layout_marginBottom="20dp"
-        android:textColor="@color/light_blue"/>
+        android:textColor="@color/colorOnSecondary"/>
 
 
     <TextView
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:text="@string/setting_writemode"
         android:textAlignment="center"
-        android:textColor="@color/dark_blue"
+        android:textColor="@color/colorOnPrimary"
         android:textSize="15sp"
         android:layout_marginBottom="10dp"/>
 
@@ -59,6 +59,6 @@
         android:textAlignment="center"
         android:text="@string/instructions_writemode"
         android:layout_marginBottom="20dp"
-        android:textColor="@color/light_blue"/>
+        android:textColor="@color/colorOnSecondary"/>
 
 </LinearLayout>

@@ -14,7 +14,7 @@
         android:text=""
         android:layout_weight="1"
         android:textAlignment="textStart"
-        android:textColor="@color/light_blue"/>
+        android:textColor="@color/colorOnSecondary"/>
 
     <TextView
         android:id="@+id/statisticsValue"
@@ -23,6 +23,6 @@
         android:text=""
         android:layout_weight="1"
         android:textAlignment="textEnd"
-        android:textColor="@color/light_blue"/>
+        android:textColor="@color/colorOnSecondary"/>
 
 </LinearLayout>

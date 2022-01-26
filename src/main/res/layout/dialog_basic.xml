@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textColor="@color/dark_blue"
+        android:textColor="@color/colorOnPrimary"
         android:layout_margin="30dp"
         android:id="@+id/dialog_text"/>
 
@@ -23,8 +23,8 @@
             style="@style/blue_button"
             android:layout_weight="1"
             android:textAlignment="center"
-            android:textColor="@color/very_light_blue"
-            android:background="@color/dark_blue"
+            android:textColor="@color/colorAccent"
+            android:background="@color/colorOnPrimary"
             android:layout_margin="1dp"
             android:id="@+id/dialog_yes_button"/>
 
@@ -35,8 +35,8 @@
             style="@style/blue_button"
             android:layout_weight="1"
             android:textAlignment="center"
-            android:textColor="@color/very_light_blue"
-            android:background="@color/dark_blue"
+            android:textColor="@color/colorAccent"
+            android:background="@color/colorOnPrimary"
             android:layout_margin="1dp"
             android:id="@+id/dialog_no_button"/>
     </LinearLayout>

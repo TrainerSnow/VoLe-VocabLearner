@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
-            android:textColor="@color/dark_blue"
+            android:textColor="@color/colorOnPrimary"
             android:id="@+id/highScoreView"/>
 
         <ImageView
@@ -63,7 +63,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/dark_blue"
+            android:textColor="@color/colorOnPrimary"
             android:id="@+id/currentScoreView"/>
 
 
@@ -102,9 +102,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/solution"
-            android:textColor="@color/light_blue"
+            android:textColor="@color/colorOnSecondary"
             tools:ignore="TouchTargetSizeCheck"
-            android:textColorHint="@color/light_blue"
+            android:textColorHint="@color/colorOnSecondary"
             android:inputType="textNoSuggestions|textVisiblePassword" />
 
     </LinearLayout>
