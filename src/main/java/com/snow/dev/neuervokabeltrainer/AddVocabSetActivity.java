@@ -13,6 +13,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,10 +40,12 @@ public class AddVocabSetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vocab_set);
 
-        Log.d(TAG, "onCreate: " + Variables.vocabsetJSONObject.toString());
-
         getSupportActionBar().setTitle(getResources().getString(R.string.create_new_set));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ResourcesCompat.getColor(getResources(), R.color.colorOnSecondary, null)));
+
+        AdView adView = findViewById(R.id.adViewAddSet);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
         EditText titleInput = findViewById(R.id.newVocabSetTitle);
         EditText descriptionInput = findViewById(R.id.newVocabSetDescription);
@@ -60,13 +65,13 @@ public class AddVocabSetActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 String newVocSetDesc = descriptionInput.getText().toString();
-                titleInput.getBackground().mutate().setColorFilter((getResources().getColor(android.R.color.holo_green_light)), PorterDuff.Mode.SRC_ATOP);
-                descriptionInput.getBackground().mutate().setColorFilter((getResources().getColor(android.R.color.holo_green_light)), PorterDuff.Mode.SRC_ATOP);
+                titleInput.getBackground().mutate().setColorFilter((getResources().getColor(R.color.red)), PorterDuff.Mode.SRC_ATOP);
+                descriptionInput.getBackground().mutate().setColorFilter((getResources().getColor(R.color.green)), PorterDuff.Mode.SRC_ATOP);
                 if(newVocSetTitle.equals("")){
-                    titleInput.getBackground().mutate().setColorFilter((getResources().getColor(android.R.color.holo_red_light)), PorterDuff.Mode.SRC_ATOP);
+                    titleInput.getBackground().mutate().setColorFilter((getResources().getColor(R.color.red)), PorterDuff.Mode.SRC_ATOP);
                 }
                 if(newVocSetDesc.equals("")){
-                    descriptionInput.getBackground().mutate().setColorFilter((getResources().getColor(android.R.color.holo_red_light)), PorterDuff.Mode.SRC_ATOP);
+                    descriptionInput.getBackground().mutate().setColorFilter((getResources().getColor(R.color.red)), PorterDuff.Mode.SRC_ATOP);
                 }
                 if(newVocSetTitle.equals("")|| newVocSetDesc.equals("")){
                     return;

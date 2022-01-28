@@ -8,6 +8,12 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
         }else{
             setContentView(R.layout.loading_screen);
         }
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
 
 
         getSupportActionBar().setTitle("");
@@ -82,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
         updateJSONFile(Variables.statisticsJSONObject, Variables.STATISTICS_FILE_NAME);
 
         try {
-            Log.d(TAG, Variables.vocabsJSONObject.toString());
             Variables.vocabsJSONArray = Variables.vocabsJSONObject.getJSONArray("vocabs");
             Variables.vocabSetTitles = Variables.vocabsetJSONObject.getJSONArray("title");
             Variables.vocabSetDescriptions = Variables.vocabsetJSONObject.getJSONArray("description");
@@ -111,24 +122,13 @@ public class MainActivity extends AppCompatActivity {
             jsonFileAsString = new String(buffer, StandardCharsets.UTF_8);
 
             if(!jsonFileAsString.isEmpty()) {
-                Log.d(TAG, "Didn't Use Preset");
                 return new JSONObject(jsonFileAsString);
             }
             else{
-                Log.d(TAG, "Used Preset");
                 return new JSONObject(jsonPreset);
             }
 
         } catch (JSONException | IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    private static JSONObject loadJSONObjectFromPreset(String preset){
-        try {
-            return new JSONObject(preset);
-        } catch (JSONException e) {
             e.printStackTrace();
         }
         return null;
@@ -143,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
         else {
             try{
                 f.createNewFile();
-                Log.d(TAG, "Manually created File");
             }catch(IOException e){
                 e.printStackTrace();
             }

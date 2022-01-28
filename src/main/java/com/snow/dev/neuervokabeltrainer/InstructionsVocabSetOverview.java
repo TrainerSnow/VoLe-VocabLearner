@@ -9,6 +9,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 public class InstructionsVocabSetOverview extends AppCompatActivity {
 
     @Override
@@ -24,6 +27,10 @@ public class InstructionsVocabSetOverview extends AppCompatActivity {
 
         getSupportActionBar().setTitle(getResources().getString(R.string.help));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ResourcesCompat.getColor(getResources(), R.color.colorOnSecondary, null)));
+
+        AdView adView = findViewById(R.id.adViewInstVoc);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
         findViewById(R.id.returnToMainButton3).setOnClickListener(new View.OnClickListener() {
             @Override

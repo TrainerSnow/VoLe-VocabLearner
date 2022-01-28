@@ -15,6 +15,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -37,6 +40,10 @@ public class StatisticsActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle(getResources().getString(R.string.statistics));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ResourcesCompat.getColor(getResources(), R.color.colorOnSecondary, null)));
+
+        AdView adView = findViewById(R.id.adViewStats);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
         statisticsListView = findViewById(R.id.statisticsListView);
         thisActivity = StatisticsActivity.this;

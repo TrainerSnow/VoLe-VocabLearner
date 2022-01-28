@@ -17,6 +17,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -57,16 +60,24 @@ public class HomeActivity extends AppCompatActivity {
 
         thisClass = HomeActivity.this;
 
+        /*
+        Load ads
+         */
+
+        AdView adView = findViewById(R.id.adViewHome);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
         vocabSetsView = findViewById(R.id.vocabSetsView);
         vocabSetsArray = new ArrayList<>();
         View addNewVocabSetButton = findViewById(R.id.addNewVocabSetButton);
         View startSettingsButton = findViewById(R.id.startSettingsButton);
         View startStatisticsButton = findViewById(R.id.startStatisticsButton);
         View showInstructionsHomeButton = findViewById(R.id.startInstructionsHomeButton);
+        View startInfoButton = findViewById(R.id.startInfoButton);
 
         try {
             for (int i = 0; i < Variables.vocabSetTitles.length(); i++) {
-                Log.d(TAG, "onCreate: " + i);
                 vocabSetsArray.add(new VocabSet(Variables.VOCAB_ARRAY_PRESET, Variables.vocabSetTitles.getString(i), Variables.vocabSetDescriptions.getString(i), Variables.vocabSetStreak.getInt(i)));
             }
         }catch(JSONException e) {
@@ -142,6 +153,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getBaseContext(),InstructionsHomeActivity.class));
+            }
+        });
+
+        startInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), InfoActivity.class));
             }
         });
     }

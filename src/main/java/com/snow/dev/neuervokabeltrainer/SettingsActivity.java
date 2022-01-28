@@ -10,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.res.ResourcesCompat;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,6 +39,10 @@ public class SettingsActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle(getResources().getString(R.string.settings));
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ResourcesCompat.getColor(getResources(), R.color.colorOnSecondary, null)));
+
+        AdView adView = findViewById(R.id.adViewSettings);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
         activateCapitalizationModeSwitch = findViewById(R.id.activateCapitalizationmodeSwitch);
         activateWriteModeSwitch = findViewById(R.id.activateWriteModeSwitch);

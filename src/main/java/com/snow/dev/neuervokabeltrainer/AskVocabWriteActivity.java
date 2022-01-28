@@ -15,6 +15,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -73,6 +76,10 @@ public class AskVocabWriteActivity extends AppCompatActivity {
             setContentView(R.layout.activity_ask_vocab_write);
             getSupportActionBar().setTitle(Variables.currentVocabSetName);
             getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ResourcesCompat.getColor(getResources(), R.color.colorOnSecondary, null)));
+
+            AdView adView = findViewById(R.id.adViewAskVocWrite);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            adView.loadAd(adRequest);
 
             vocabShowTextView = findViewById(R.id.vocabShowView);
             vocabInputEditText = findViewById(R.id.vocabInputEditText);
@@ -201,7 +208,7 @@ public class AskVocabWriteActivity extends AppCompatActivity {
             updateVocJSONFile(vocabsObject);
             assignVocab();
             showVocab();
-            vocabInputEditText.getBackground().mutate().setColorFilter((getResources().getColor(android.R.color.holo_green_light)), PorterDuff.Mode.SRC_ATOP);
+            vocabInputEditText.getBackground().mutate().setColorFilter((getResources().getColor(R.color.green)), PorterDuff.Mode.SRC_ATOP);
         }catch(JSONException e){
             e.printStackTrace();
         }
@@ -236,7 +243,7 @@ public class AskVocabWriteActivity extends AppCompatActivity {
         updateVocJSONFile(vocabsObject);
 
         showVocab();
-        vocabInputEditText.getBackground().mutate().setColorFilter((getResources().getColor(android.R.color.holo_red_light)), PorterDuff.Mode.SRC_ATOP);
+        vocabInputEditText.getBackground().mutate().setColorFilter((getResources().getColor(R.color.red)), PorterDuff.Mode.SRC_ATOP);
 
     }
 

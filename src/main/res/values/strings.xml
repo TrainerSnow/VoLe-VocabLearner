@@ -1,54 +1,59 @@
 <resources>
     <string name="app_name" translatable="false">VoLe - Vocab Learner</string>
     <string name="title_activity_ask_vocab_write" translatable="false">AskVocabWriteActivity</string>
-    <string name="setname">Sammlungsname</string>
-    <string name="setdescription">Sammlungsbeschreibung</string>
-    <string name="back">Zurück</string>
-    <string name="solution">Lösung</string>
-    <string name="apply">Eingeben</string>
-    <string name="setting_capitalization">Groß/Kleinschreibung</string>
-    <string name="setting_writemode">Schreibmodus</string>
-    <string name="setting_cheatmode">Cheatmodus</string>
-    <string name="save">Speichern</string>
-    <string name="vocabname">Vokabel</string>
-    <string name="vocabvalue">Lösung</string>
-    <string name="no_vocabs_in_set">Dieses Set hat keine Vokabeln. Bitte füge erst welche Hinzu</string>
-    <string name="cheatmode_is_off">Cheatmodus ist aus!</string>
-    <string name="deleted">Gelöscht: %s - %s</string>
-    <string name="vocab_cheatmode_not_count_stats">Vokabeln die mit Cheatmodus eingegeben wurden zählen nicht zu den Statistiken</string>
-    <string name="delete_set_dialog_message">Willst du das Set Wirklich löschen?</string>
-    <string name="yes">Ja</string>
-    <string name="no">Nein</string>
-    <string name="score">Serie:</string>
-    <string name="reset">Zurücksetzen</string>
-    <string name="instructions_setting">Klicke auf dieses Symbol um in die Einstellungen zu gelangen</string>
-    <string name="instructions_stats">Klicke auf dieses Symbol um deine Statistiken anzusehen</string>
-    <string name="instructions_add_set">Klicke auf dieses Symbol, um eine neue Vokabelsammlung hinzuzufügen</string>
-    <string name="instructions_voc_set_long_tap">Klicke lange auf ein Vokabelset, um es zu bearbeiten, und neue Vokabeln hinzuzufügen</string>
-    <string name="instructions_back_to_home">Klicke auf dieses Symbol um zurück zur Übersicht zu kommen</string>
-    <string name="instructions_add_vocab">Klicke dieses Symbol um die aktuelle Vokabel zu der Sammlung zu speichern</string>
-    <string name="instructions_stats_vocset">Klicke dieses Symbol um die Statistiken für die aktuelle Sammlung zu sehen</string>
-    <string name="voc_set_alr_exists">Dieses Vokabelset existiert bereits. Bitte wähle einen anderen Namen</string>
+    <string name="setname">Set name</string>
+    <string name="setdescription">Set description</string>
+    <string name="back">Return</string>
+    <string name="solution">Solution</string>
+    <string name="apply">Enter</string>
+    <string name="setting_capitalization">Capitalization</string>
+    <string name="setting_writemode">Writemode</string>
+    <string name="setting_cheatmode">Cheatmode</string>
+    <string name="save">Save</string>
+    <string name="vocabname">Vocab</string>
+    <string name="vocabvalue">Solution</string>
+    <string name="no_vocabs_in_set">This has has no vocab. Please add some.</string>
+    <string name="cheatmode_is_off">Cheatmode is disabled!</string>
+    <string name="deleted">Deleted: %s - %s</string>
+    <string name="vocab_cheatmode_not_count_stats">Vocabs that have been entered using Cheatmode don\'t count towards your statictics</string>
+    <string name="delete_set_dialog_message">Do you really want to delete this set?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="score">Streak:</string>
+    <string name="reset">Reset</string>
+    <string name="instructions_setting">Click this symbol to be redirected to the settings menu.</string>
+    <string name="instructions_stats">Click this symbol to see your statistics.</string>
+    <string name="instructions_add_set">Click this symbol, to add a new vocab set.</string>
+    <string name="instructions_voc_set_long_tap">Long - click a vocab set to edit it, and to add new vocab.</string>
+    <string name="instructions_back_to_home">Click this symbol to return to the main menu.</string>
+    <string name="instructions_add_vocab">Click this symbol to save the current vocab to the current vocab set.</string>
+    <string name="instructions_stats_vocset">Click this symbol to see the statistics for the current vocab set</string>
+    <string name="voc_set_alr_exists">This vocab set already exists. Please Choose another name.</string>
     <string name="high_score" translatable="false">"Highscore: "</string>
-    <string name="app_open_number">Appöffnungen</string>
-    <string name="highest_highscore">Höchster Highscore</string>
-    <string name="iterations">Durchgänge</string>
-    <string name="right_solutions">Richtige Lösungen</string>
-    <string name="wrong_solutions">Falsche Lösungen</string>
-    <string name="total_solutions">Gesamte Lösungen</string>
+    <string name="app_open_number">Times app opened</string>
+    <string name="highest_highscore">Highest Highscore</string>
+    <string name="iterations">Iterations</string>
+    <string name="right_solutions">Right solutions</string>
+    <string name="wrong_solutions">Wrong solutions</string>
+    <string name="total_solutions">Total solutions</string>
     <string name="rate_in_percent">Rate in %</string>
-    <string name="general_stats">Generelle Statistik</string>
-    <string name="normal_mode">Normaler Modus</string>
-    <string name="write_mode">Schreibmodus</string>
-    <string name="best_voc_set">Beste Vokabelsammlung</string>
-    <string name="instructions_capitalization">Diese Einstellung definiert, ob bei dem Abfragen von Vokabeln im Schreibmodus Groß- und Kleinschreibung beachtet werden soll.</string>
-    <string name="instructions_cheatmode">Diese Einstellung definiert, ob der Cheatknopf betätigt werden kann, oder nicht</string>
-    <string name="help">Hilfe</string>
-    <string name="create_new_set">Neue Vokabelsammlung erstellen</string>
-    <string name="instructions_writemode">Diese Einstellung definiert, ob der Schreibmodus ein, oder ausgeschaltet ist</string>
-    <string name="settings">Einstellungen</string>
-    <string name="statistics">Statistiken</string>
-    <string name="vocab_set_delete_confirm">Willst du die Vokabelsammlung %s wirklich löschen? Die Daten gehen dabei verloren</string>
-    <string name="stats_reset_confirm">Willst du die Statistiken wirklich zurücksetzen? Die Daten gehen dabei verloren</string>
-    <string name="reset_stats_toast">Statistiken zurückgesetzt</string>
+    <string name="general_stats">General Statistic</string>
+    <string name="normal_mode">Normal Mode</string>
+    <string name="write_mode">Write Mode</string>
+    <string name="best_voc_set">Best Vocab Set</string>
+    <string name="instructions_capitalization">This Setting defines, if capitalization is ignored or not, when using the write mode</string>
+    <string name="instructions_cheatmode">This Setting defines, if the cheatbutton can be used to show the current solution, or not</string>
+    <string name="help">Help</string>
+    <string name="create_new_set">Add new Vocabset</string>
+    <string name="instructions_writemode">This Setting defines, if write mode is going to be used</string>
+    <string name="settings">Settings</string>
+    <string name="statistics">Statistics</string>
+    <string name="vocab_set_delete_confirm">Do you really want to delete the vocabset %s? The Datat will be lost.</string>
+    <string name="stats_reset_confirm">Do you really want to reset your statistics? Your data will be lost</string>
+    <string name="reset_stats_toast">Reset Stats</string>
+    <string name="gh_repo" translatable="false">Github Repository:</string>
+    <string name="pp">Privacy Policy :</string>
+    <string name="gh_repo_link" translatable="false">https://github.com/TrainerSnow/VoLe-VocabLearner</string>
+    <string name="pp_link" translatable="false">https://docs.google.com/document/d/1fUYOkJZOyd2FwTM6uIagcU1J4LgAsk7vAJ1hlDUqL_M/edit</string>
+    <string name="info" translatable="false">Information</string>
 </resources>

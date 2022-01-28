@@ -8,6 +8,9 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,6 +32,10 @@ public class VocabSetStatisticsActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Statistik für " + Variables.currentVocabSetName);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ResourcesCompat.getColor(getResources(), R.color.colorOnSecondary, null)));
+
+        AdView adView = findViewById(R.id.adViewVocStats);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
         ListView vocabSetStatsView = findViewById(R.id.vocabSetStats);
         ArrayList<VocabPair> vocabPairs = new ArrayList<>();

@@ -61,7 +61,6 @@ public class OverviewVocabActivity extends AppCompatActivity {
         View startInstructionsSetActivity = findViewById(R.id.startInstructionsSetButton);
 
         vocabsJSONObject = loadJSONFile(new File(getBaseContext().getFilesDir() + "/" + Variables.currentVocabulary + ".json"));
-        Log.d(TAG, vocabsJSONObject.toString());
         try {
             vocabArrayJSON = vocabsJSONObject.getJSONArray("vocabs");
         } catch (JSONException e) {

@@ -5,66 +5,89 @@
     android:layout_height="match_parent"
     tools:context=".InstructionsHomeActivity"
     android:orientation="vertical"
-    android:gravity="center"
     android:padding="40dp"
     android:background="@color/background">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_settings"
-        android:background="@drawable/primary_button_round"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/startSettingsButton2"/>
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/instructions_setting"
-        android:textAlignment="center"
-        android:layout_marginBottom="30dp"
-        android:textColor="@color/colorOnSecondary"/>
+        android:layout_marginBottom="20dp">
 
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adViewInstHome"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+        </com.google.android.gms.ads.AdView>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_statistics"
-        android:background="@drawable/primary_button_round"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/startStatisticsButton2"/>
+    </LinearLayout>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/instructions_stats"
-        android:textAlignment="center"
-        android:layout_marginBottom="30dp"
-        android:textColor="@color/colorOnSecondary"/>
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_settings"
+            android:background="@drawable/primary_button_round"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/startSettingsButton2"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/instructions_setting"
+            android:textAlignment="center"
+            android:layout_marginBottom="30dp"
+            android:textColor="@color/colorOnSecondary"/>
 
 
-    <ImageView
-        android:id="@+id/addNewVocabSetButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/primary_button_round"
-        android:src="@drawable/ic_add" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_statistics"
+            android:background="@drawable/primary_button_round"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/startStatisticsButton2"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/instructions_add_set"
-        android:textAlignment="center"
-        android:textColor="@color/colorOnSecondary"
-        android:layout_marginBottom="30dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/instructions_stats"
+            android:textAlignment="center"
+            android:layout_marginBottom="30dp"
+            android:textColor="@color/colorOnSecondary"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/instructions_voc_set_long_tap"
-        android:textColor="@color/red"
-        android:textAlignment="center"/>
+
+        <ImageView
+            android:id="@+id/addNewVocabSetButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/primary_button_round"
+            android:src="@drawable/ic_add" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/instructions_add_set"
+            android:textAlignment="center"
+            android:textColor="@color/colorOnSecondary"
+            android:layout_marginBottom="30dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/instructions_voc_set_long_tap"
+            android:textColor="@color/red"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
 
 
 

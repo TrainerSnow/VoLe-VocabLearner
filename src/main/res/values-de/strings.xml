@@ -49,4 +49,5 @@
     <string name="vocab_set_delete_confirm">Willst du die Vokabelsammlung %s wirklich löschen? Die Daten gehen dabei verloren</string>
     <string name="stats_reset_confirm">Willst du die Statistiken wirklich zurücksetzen? Die Daten gehen dabei verloren</string>
     <string name="reset_stats_toast">Statistiken zurückgesetzt</string>
+    <string name="pp">Datenschutzerklärung</string>
 </resources>

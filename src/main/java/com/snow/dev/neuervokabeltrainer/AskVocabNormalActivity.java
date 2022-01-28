@@ -12,6 +12,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -73,7 +76,9 @@ public class AskVocabNormalActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(Variables.currentVocabSetName);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ResourcesCompat.getColor(getResources(), R.color.colorOnSecondary, null)));
 
-
+        AdView adView = findViewById(R.id.adViewAsKVocNormal);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
         vocabGuessView.setOnClickListener(new View.OnClickListener() {
             @Override
